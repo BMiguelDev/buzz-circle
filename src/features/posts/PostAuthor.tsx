@@ -17,7 +17,7 @@ const PostAuthor = ({ userId, className }: PropTypes) => {
     });
 
     return (
-        <Link className={className} to={`/users/${userId}`} onClick={(e) => e.stopPropagation()}>
+        <Link className={className} to={`/buzz-circle/users/${userId}`} onClick={(e) => e.stopPropagation()}>
             <FontAwesomeIcon icon={faUser} />
             <span>{author ? author.name : "Anonymous"}</span>
         </Link>

@@ -8,7 +8,8 @@ import { StyledUserPage, StyledUsersList } from "./components/styles/Users.style
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<Layout />}>
+            {/* Here we are using "/buzz-circle" because Github pages requires the default path to match the "homepage" (in package.json) */}
+            <Route path="/buzz-circle" element={<Layout />}>
                 <Route index element={<StyledPostsList />} />
                 <Route path="post">
                     <Route index element={<StyledAddPostPage />} />
@@ -19,7 +20,7 @@ function App() {
                     <Route index element={<StyledUsersList />} />
                     <Route path=":userId" element={<StyledUserPage />} />
                 </Route>
-                <Route path="*" element={<Navigate replace to="/" />} />
+                <Route path="*" element={<Navigate replace to="/buzz-circle" />} />
             </Route>
         </Routes>
     );

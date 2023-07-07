@@ -38,7 +38,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
             await removePost({ id: post.id })
                 .unwrap()
                 .then(() => {
-                    navigate("/");
+                    navigate("/buzz-circle");
                 });
         } catch (error) {
             console.log("Unable to delete post", error);
@@ -47,7 +47,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
 
     return (
         <div className={className}>
-            <StyledBackButton path="/" />
+            <StyledBackButton path="/buzz-circle" />
             <article className="single_post_container">
                 <div className="post_top_row">
                     <div className="author_and_time">
@@ -55,7 +55,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
                         <StyledTimePeriod dateString={post.date} />
                     </div>
                     <div className="function_button_row">
-                        <Link to={`/post/edit/${post.id}`}>
+                        <Link to={`/buzz-circle/post/edit/${post.id}`}>
                             <StyledSmallButton buttonTitle="Edit" />
                         </Link>
                         <button className="delete_post_button" onClick={handleDeletePost}>

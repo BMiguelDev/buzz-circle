@@ -23,7 +23,7 @@ const UsersList = ({ className }: PropTypes) => {
                 nameLength = user.name.length;
                 return (
                     <li key={userId}>
-                        <Link to={`/users/${userId}`}>
+                        <Link to={`/buzz-circle/users/${userId}`}>
                             <FontAwesomeIcon icon={faUser} />
                             <span>{nameLength > 16 ? user.name.substring(0, 16) + "..." : user.name}</span>
                         </Link>

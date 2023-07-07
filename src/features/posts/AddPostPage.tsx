@@ -66,7 +66,7 @@ const AddPostPage = ({ className }: PropTypes) => {
                     .unwrap()
                     .then(() => {
                         handleClearForm();
-                        navigate("/");
+                        navigate("/buzz-circle");
                     });
             } catch (error) {
                 console.error("Failed to save post", error);
@@ -90,7 +90,7 @@ const AddPostPage = ({ className }: PropTypes) => {
 
     return (
         <div className={className}>
-            <StyledBackButton path="/" />
+            <StyledBackButton path="/buzz-circle" />
             <section className="add_post_container" style={isLoading ? { opacity: 0.5 } : {}}>
                 <h2>New Post</h2>
                 <form onSubmit={handleSubmit}>

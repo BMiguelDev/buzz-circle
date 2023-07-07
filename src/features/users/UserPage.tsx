@@ -48,15 +48,15 @@ const UserPage = ({ className }: PropTypes) => {
         const { entities, ids } = userPosts;
         content = (
             <>
-                <StyledBackButton path="/users" />
+                <StyledBackButton path="/buzz-circle/users" />
                 <div className="user_page_container">
                     <h2>{user?.name}</h2>
                     <ul>
                         {ids.map((id) => (
-                            <li key={id} onClick={() => navigate(`/post/${id}`)}>
+                            <li key={id} onClick={() => navigate(`/buzz-circle/post/${id}`)}>
                                 <div className="user_post_top_row">
                                     <StyledTimePeriod dateString={entities[id]?.date} />
-                                    <Link to={`/post/${id}`} onClick={(e) => e.stopPropagation()}>
+                                    <Link to={`/buzz-circle/post/${id}`} onClick={(e) => e.stopPropagation()}>
                                         <StyledSmallButton buttonTitle="View Post" />
                                     </Link>
                                 </div>

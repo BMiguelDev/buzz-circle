@@ -23,13 +23,13 @@ interface PropTypes {
     if (!post) return <div>Oops, no Post found</div>;
 
     return (
-        <article className={className} onClick={() => navigate(`/post/${post.id}`)}>
+        <article className={className} onClick={() => navigate(`/buzz-circle/post/${post.id}`)}>
             <div className="post_top_row">
                 <div className="author_and_time">
                     <StyledPostAuthor userId={post.userId} />
                     <StyledTimePeriod dateString={post.date} />
                 </div>
-                <Link to={`/post/${post.id}`} className="single_post_link">
+                <Link to={`/buzz-circle/post/${post.id}`} className="single_post_link">
                     <StyledSmallButton buttonTitle="View Post" />
                 </Link>
             </div>

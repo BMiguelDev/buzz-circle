@@ -88,7 +88,7 @@ const EditPostPage = ({ className }: PropTypes) => {
         ) {
             setEditedPostFields(emptyPost);
             setInitialPostFields(emptyPost);
-            navigate(`/post/${post.id}`);
+            navigate(`/buzz-circle/post/${post.id}`);
             return;
         }
         if (isFormSubmittable) {
@@ -103,7 +103,7 @@ const EditPostPage = ({ className }: PropTypes) => {
                     .then(() => {
                         setEditedPostFields(emptyPost);
                         setInitialPostFields(emptyPost);
-                        navigate(`/post/${post.id}`);
+                        navigate(`/buzz-circle/post/${post.id}`);
                     });
             } catch (error) {
                 console.error("Failed to save post", error);
@@ -129,7 +129,7 @@ const EditPostPage = ({ className }: PropTypes) => {
 
     return (
         <div className={className}>
-            <StyledBackButton path={`/post/${postId}`} />
+            <StyledBackButton path={`/buzz-circle/post/${postId}`} />
             <section className="edit_post_container" style={isLoading ? { opacity: 0.5 } : {}}>
                 <h2>Edit Post</h2>
                 <form onSubmit={handleSubmit}>
