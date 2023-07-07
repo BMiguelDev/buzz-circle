@@ -6,8 +6,6 @@
 
 #### Check the app: https://bmigueldev.github.io/buzz-circle/
 
-###### Note: <br /> - The API's availability may be hindered by [render](https://render.com/) <br /> - The first API request may take up to a minute due to [render](https://render.com/)'s delay to get the server back online after a small inactivity period
-
 ###### Note: <br /> - The app's functionality may be hindered by the API's availability (which is hosted on [render](https://render.com/)) <br /> - The first API request may take up to a minute due to [render](https://render.com/)'s delay to get the server back online after a small inactivity period
 
 
