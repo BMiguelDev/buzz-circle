@@ -13,13 +13,15 @@ const PostAuthor = ({ userId, className }: PropTypes) => {
     const { user: author } = useGetUsersQuery("getUsers", {
         selectFromResult: ({ data }) => ({
             user: data?.entities[userId],
-        }), 
+        }),
     });
 
     return (
         <Link className={className} to={`/buzz-circle/users/${userId}`} onClick={(e) => e.stopPropagation()}>
             <FontAwesomeIcon icon={faUser} />
-            <span>{author ? author.name : "Anonymous"}</span>
+            <span>
+                {author ? (author.name.length <= 16 ? author.name : author.name.substring(0, 15) + "...") : "Anonymous"}
+            </span>
         </Link>
     );
 };

@@ -144,5 +144,8 @@ export const {
 // - show author image instead of icon (show icon only for authors with no image)
 // - add user picture to user page design later
 // - make app responsive
+    // - fix post author and timeperiod not being glued together on screens around 400 width
+// - add theme to styled components and then add it to my portfolio's skills
 // - recheck app's color pallete (purple)
 // - Add dummy data in case server can't be reached?
+// - maybe add pagination to users page, posts page and user posts page

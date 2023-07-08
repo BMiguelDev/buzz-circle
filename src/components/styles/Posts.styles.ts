@@ -19,7 +19,6 @@ export const StyledPostsList = styled(PostsList)`
         font-weight: bold;
         margin: 0;
         text-indent: 1rem;
-        //color: var(--app-text-main-color);
         color: var(--app-intermediate-color);
     }
 
@@ -28,8 +27,24 @@ export const StyledPostsList = styled(PostsList)`
         flex-direction: column;
         gap: 1.25rem;
     }
-`;
 
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        margin: 1.5rem 8%;
+        gap: 1.5rem;
+
+        .postslist_title {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.225rem;
+        }
+
+        .postslist_posts {
+            gap: 1rem;
+        }
+    }
+`;
 
 const dangerPulse = keyframes`
  0% {
@@ -57,8 +72,8 @@ export const StyledAddPostPage = styled(AddPostPage)`
 
     .add_post_container {
         margin: auto 20%;
-        border: .05rem solid var(--app-intermediate-color);
-        border-radius: .65rem;
+        border: 0.05rem solid var(--app-intermediate-color);
+        border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
@@ -109,7 +124,6 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     }
 
                     &.new_post_textarea_container {
-
                         div::before {
                             width: 100%;
                         }
@@ -121,17 +135,19 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     color: var(--app-text-main-color);
                 }
 
-                input, textarea, select {
+                input,
+                textarea,
+                select {
                     font: inherit;
-                    box-shadow: 0 0 .2rem .075rem var(--app-text-support-color);
+                    box-shadow: 0 0 0.2rem 0.075rem var(--app-text-support-color);
                     border: none;
                     background-color: var(--app-intermediate-color);
                     border-radius: 0.35rem;
                     color: var(--app-secondary-color);
 
                     &:focus {
-                        outline: .1rem solid var(--app-primary-color);
-                        box-shadow: 0 0 .25rem .1rem var(--app-intermediate-color);
+                        outline: 0.1rem solid var(--app-primary-color);
+                        box-shadow: 0 0 0.25rem 0.1rem var(--app-intermediate-color);
                     }
                 }
 
@@ -147,7 +163,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     padding: 0.25rem 0.5rem;
 
                     option {
-                        font-size: .95rem;
+                        font-size: 0.95rem;
                         max-width: 100%;
                     }
                 }
@@ -171,8 +187,8 @@ export const StyledAddPostPage = styled(AddPostPage)`
                 border: none;
                 background-color: var(--app-secondary-color-support);
                 color: var(--app-text-main-color);
-                letter-spacing: .025rem;
-                transition: all .1s ease-in-out;
+                letter-spacing: 0.025rem;
+                transition: all 0.1s ease-in-out;
 
                 &:disabled {
                     background-color: var(--app-text-support-color);
@@ -185,10 +201,78 @@ export const StyledAddPostPage = styled(AddPostPage)`
             }
         }
     }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        margin: 3%;
+
+        .add_post_container {
+            margin: 1rem 8%;
+            gap: 1.25rem;
+            padding: 0.75rem 1rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.225rem;
+            }
+
+            form {
+                gap: 1rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 100%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.925rem;
+                    }
+
+                    textarea {
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.85rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.85rem;
+
+                        option {
+                            font-size: 0.85rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 100%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.85rem;
+                    }
+                }
+
+                button {
+                    font-size: 0.9rem;
+                    margin-top: 0.25rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.25rem 0.65rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostItem = styled(PostItem)`
-    border: .05rem solid var(--app-intermediate-color);
+    border: 0.05rem solid var(--app-intermediate-color);
     border-radius: 0.65rem;
     padding: 1rem;
     transition: all 0.05s ease-in-out;
@@ -198,7 +282,7 @@ export const StyledPostItem = styled(PostItem)`
     gap: 0.5rem;
 
     &:hover {
-        box-shadow: 0 0 .265rem .115rem var(--app-intermediate-color);
+        box-shadow: 0 0 0.265rem 0.115rem var(--app-intermediate-color);
     }
 
     .post_top_row {
@@ -249,6 +333,50 @@ export const StyledPostItem = styled(PostItem)`
             word-wrap: break-word;
         }
     }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        padding: 0.5rem 0.75rem;
+        gap: 0.5rem;
+
+        &:hover {
+            box-shadow: unset;
+        }
+
+        .post_top_row {
+            width: 100%;
+            gap: 5%;
+
+            .author_and_time {
+                width: 70%;
+                justify-content: flex-start;
+            }
+
+            .single_post_link {
+                max-width: 25%;
+
+                &:hover {
+                    scale: 1;
+                }
+            }
+        }
+
+        .post_text {
+            padding: 0.65rem 0.5rem;
+            gap: 0.75rem;
+
+            h2 {
+                font-size: 1.05rem;
+                letter-spacing: 0.03rem;
+            }
+
+            p {
+                line-height: 1.05rem;
+                font-size: 0.85rem;
+            }
+        }
+    }
 `;
 
 export const StyledReactionButtons = styled(ReactionButtons)`
@@ -286,6 +414,28 @@ export const StyledReactionButtons = styled(ReactionButtons)`
             margin: 0;
             padding-top: 0.1rem;
             font-size: 0.865rem;
+        }
+    }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+
+        .reaction_button {
+            gap: 0.15rem;
+            background-color: transparent;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem 0.2rem 0.4rem;
+
+            &:hover:not(:active):not(:focus) {
+                background-color: transparent;
+            }
+
+            p {
+                font-size: 0.6rem;
+            }
         }
     }
 `;
@@ -374,8 +524,8 @@ export const StyledEditPostPage = styled(EditPostPage)`
 
     .edit_post_container {
         margin: auto 20%;
-        border: .05rem solid var(--app-intermediate-color);
-        border-radius: .65rem;
+        border: 0.05rem solid var(--app-intermediate-color);
+        border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
@@ -426,7 +576,6 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     }
 
                     &.new_post_textarea_container {
-
                         div::before {
                             width: 100%;
                         }
@@ -438,17 +587,19 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     color: var(--app-text-main-color);
                 }
 
-                input, textarea, select {
+                input,
+                textarea,
+                select {
                     font: inherit;
-                    box-shadow: 0 0 .2rem .075rem var(--app-text-support-color);
+                    box-shadow: 0 0 0.2rem 0.075rem var(--app-text-support-color);
                     border: none;
                     background-color: var(--app-intermediate-color);
                     border-radius: 0.35rem;
                     color: var(--app-secondary-color);
 
                     &:focus {
-                        outline: .1rem solid var(--app-primary-color);
-                        box-shadow: 0 0 .25rem .1rem var(--app-intermediate-color);
+                        outline: 0.1rem solid var(--app-primary-color);
+                        box-shadow: 0 0 0.25rem 0.1rem var(--app-intermediate-color);
                     }
                 }
 
@@ -464,7 +615,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     padding: 0.25rem 0.5rem;
 
                     option {
-                        font-size: .95rem;
+                        font-size: 0.95rem;
                         max-width: 100%;
                     }
                 }
@@ -488,8 +639,8 @@ export const StyledEditPostPage = styled(EditPostPage)`
                 border: none;
                 background-color: var(--app-secondary-color-support);
                 color: var(--app-text-main-color);
-                letter-spacing: .025rem;
-                transition: all .1s ease-in-out;
+                letter-spacing: 0.025rem;
+                transition: all 0.1s ease-in-out;
 
                 &:disabled {
                     background-color: var(--app-text-support-color);
@@ -498,6 +649,74 @@ export const StyledEditPostPage = styled(EditPostPage)`
 
                 &:hover:not(:disabled) {
                     scale: 1.075;
+                }
+            }
+        }
+    }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        margin: 3%;
+
+        .edit_post_container {
+            margin: 1rem 8%;
+            gap: 1.25rem;
+            padding: 0.75rem 1rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.225rem;
+            }
+
+            form {
+                gap: 1rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 100%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.925rem;
+                    }
+
+                    textarea {
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.85rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.85rem;
+
+                        option {
+                            font-size: 0.85rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 100%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.85rem;
+                    }
+                }
+
+                button {
+                    font-size: 0.9rem;
+                    margin-top: 0.25rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.25rem 0.65rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
                 }
             }
         }
@@ -530,10 +749,39 @@ export const StyledPostAuthor = styled(PostAuthor)`
         color: var(--app-primary-color);
         transition: all 0.1s ease-in-out;
     }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        gap: 0.4rem;
+        width: 50%;
+
+        &:hover {
+            span {
+                color: var(--app-primary-color);
+            }
+        }
+
+        svg {
+            padding: 0.2rem;
+            font-size: 0.65rem;
+        }
+
+        span {
+            font-size: 0.765rem;
+        }
+    }
 `;
 
 export const StyledTimePeriod = styled(TimePeriod)`
     margin: 0;
     font-size: 0.9rem;
     color: var(--app-text-support-color);
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        font-size: 0.725rem;
+        width: 50%;
+    }
 `;

@@ -25,7 +25,7 @@ const UsersList = ({ className }: PropTypes) => {
                     <li key={userId}>
                         <Link to={`/buzz-circle/users/${userId}`}>
                             <FontAwesomeIcon icon={faUser} />
-                            <span>{nameLength > 16 ? user.name.substring(0, 16) + "..." : user.name}</span>
+                            <span>{nameLength > 16 ? user.name.substring(0, 15) + "..." : user.name}</span>
                         </Link>
                     </li>
                 );

@@ -9,7 +9,7 @@ interface PropTypes {
 const BackButton = ({ className, path }: PropTypes) => {
     return (
         <Link to={path} className={className}>
-            <StyledSmallButton buttonTitle="🡸 Back" />
+            <StyledSmallButton buttonTitle="Back" />
         </Link>
     );
 };

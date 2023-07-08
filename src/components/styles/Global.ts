@@ -18,16 +18,6 @@ const GlobalStyles = createGlobalStyle`
     }
 
 
-    // App content
-    .app_container {
-        background-color: var(--app-bg-color);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100vh;
-    }
-
-
     // Variables
     :root {
         --app-bg-color: rgb(32, 32, 32);

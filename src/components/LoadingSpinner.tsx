@@ -1,19 +1,33 @@
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 
 interface PropTypes {
     className?: string;
-    warning?: boolean;
 }
 
-const LoadingSpinner = ({ className, warning }: PropTypes) => {
+const LoadingSpinner = ({ className }: PropTypes) => {
+
+    const [isWarning, setIsWarning] = useState(false);
+
+    useEffect(() => {
+        const longLoading = setTimeout(() => {
+            setIsWarning(true);
+        }, 5000);
+
+        return () => {
+            clearTimeout(longLoading);
+        }
+    }, [])
+
     return (
         <div className={className}>
             <div>
                 <FontAwesomeIcon icon={faSpinner} spin />
                 <p>Loading...</p>
             </div>
-            {warning ? <p className="loading_warning">This may take up to a minute</p> : null}
+
+            { isWarning ? <p className="loading_warning">This may take up to a minute</p> : null }
         </div>
     );
 };

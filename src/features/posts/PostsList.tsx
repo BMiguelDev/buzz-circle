@@ -26,7 +26,7 @@ const PostsList = ({ className }: PropTypes) => {
 
     let content;
     if (isLoading) {
-        content = <StyledLoadingSpinner warning={true} />;
+        content = <StyledLoadingSpinner />;
     } else if (isSuccess) {
         content = postIds?.map((postId) => <StyledPostItem key={postId} postId={Number(postId)} />);
     } else if (isError) {

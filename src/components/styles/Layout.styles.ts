@@ -2,6 +2,42 @@ import styled from "styled-components";
 
 import Navbar from "../../layouts/Navbar";
 import Footer from "../../layouts/Footer";
+import Layout from "../../layouts/Layout";
+
+export const StyledLayout = styled(Layout)`
+    // App content
+    background-color: var(--app-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+
+    // Media query for unsuitable screens (mobile extremelly small)
+    @media screen and (max-width: 300px), screen and (max-height: 250px) {
+        //,
+        //screen and (max-height: 300px) and (max-width: 300px) {
+        // App content
+        visibility: hidden;
+        overflow: hidden;
+
+        &::before {
+            position: fixed;
+            visibility: visible;
+            background: var(--app-bg-color);
+            color: var(--app-primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            content: "Your screen is too small to display this App :(";
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+        }
+    }
+`;
 
 export const StyledNavbar = styled(Navbar)`
     background-color: var(--app-secondary-color);
@@ -13,13 +49,13 @@ export const StyledNavbar = styled(Navbar)`
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: .8rem 2rem;
+        padding: 0.8rem 2rem;
 
         a {
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: .15rem;
+            gap: 0.15rem;
             font-size: 1.05rem;
             font-weight: bold;
             color: var(--app-text-main-color);
@@ -32,7 +68,7 @@ export const StyledNavbar = styled(Navbar)`
             h1 {
                 margin: 0;
                 text-transform: capitalize;
-                letter-spacing: .04rem;
+                letter-spacing: 0.04rem;
             }
         }
 
@@ -45,15 +81,15 @@ export const StyledNavbar = styled(Navbar)`
             align-items: center;
 
             li {
-                transition: all .1s ease-in-out;
-                
+                transition: all 0.1s ease-in-out;
+
                 .navbar_link {
                     text-decoration: none;
                     color: var(--app-intermediate-color);
-                    transition: all .15s ease-in-out;
+                    transition: all 0.15s ease-in-out;
 
                     &:not(.navbar_link_active):hover {
-                        color: var(--app-primary-color);    
+                        color: var(--app-primary-color);
                     }
                 }
 
@@ -64,6 +100,46 @@ export const StyledNavbar = styled(Navbar)`
 
                 &:hover {
                     translate: 0 10%;
+                }
+            }
+        }
+    }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        nav {
+            padding: 0.35rem 0.725rem;
+
+            a {
+                gap: 0.15rem;
+
+                svg {
+                    font-size: .95rem;
+                }
+
+                h1 {
+                    letter-spacing: 0.035rem;
+                    font-size: 1.15rem;
+                }
+            }
+
+            .navbar_links_container {
+                gap: 0.75rem;
+                padding-top: 0.1rem;
+
+                li {
+                    .navbar_link {
+                        font-size: 0.825rem;
+                    }
+
+                    .navbar_link_active {
+                        font-size: 0.925rem;
+                    }
+
+                    &:hover {
+                        translate: 0 0;
+                    }
                 }
             }
         }
@@ -107,7 +183,7 @@ export const StyledFooter = styled(Footer)`
             color: var(--footer-color);
             width: 1.75rem;
             height: 1.75rem;
-            padding: .9rem;
+            padding: 0.9rem;
             transition: all 0.2s ease-in-out;
             border-radius: 2rem;
             text-decoration: none;
@@ -129,10 +205,60 @@ export const StyledFooter = styled(Footer)`
         a:nth-of-type(1),
         a:nth-of-type(2) {
             svg {
-                font-size: .925rem;
+                font-size: 0.925rem;
             }
         }
     }
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
+        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+        padding: 0.15rem 1rem;
+        gap: 0;
+        //height: 5%;
+
+        .footer_text {
+            p {
+                letter-spacing: 0.035rem;
+                word-spacing: 0.035rem;
+                font-size: 0.6225rem;
+            }
+        }
+
+        .footer_icon_container {
+            gap: 0.675rem;
+
+            gap: 0.35rem;
+
+            a {
+                width: 1rem;
+                height: 1rem;
+                padding: 0.2rem;
+
+                svg {
+                    font-size: 0.725rem;
+                }
+
+                &:hover {
+                    svg {
+                        color: var(--footer-color);
+                        translate: 0 0;
+                    }
+                }
+            }
+
+            a:nth-of-type(1),
+            a:nth-of-type(2) {
+                svg {
+                    font-size: 0.625rem;
+                }
+            }
+        }
+    }
+
+
+
+
 
     // Media query for mobile content (portrait)
     @media screen and (max-width: 500px) and (min-height: 501px) {
@@ -169,51 +295,6 @@ export const StyledFooter = styled(Footer)`
             a:nth-of-type(2) {
                 svg {
                     font-size: 0.65rem;
-                }
-            }
-        }
-    }
-
-    // Media query for very small mobile screens
-    @media screen and (max-width: 500px) and (max-height: 500px),
-        screen and (max-width: 300px) and (min-height: 500px) {
-        // Footer content
-        .footer_container {
-            padding: 0.1rem 0.25rem;
-            gap: 0.25rem;
-
-            .footer_text {
-                p {
-                    word-spacing: 0.015rem;
-                    font-size: 0.525rem;
-                }
-            }
-
-            .footer_icon_container {
-                gap: 0.35rem;
-
-                a {
-                    width: 0.8rem;
-                    height: 0.8rem;
-                    padding: 0.15rem;
-
-                    svg {
-                        font-size: 0.65rem;
-                    }
-
-                    &:hover {
-                        svg {
-                            color: var(--footer-color);
-                            translate: 0 0;
-                        }
-                    }
-                }
-
-                a:nth-of-type(1),
-                a:nth-of-type(2) {
-                    svg {
-                        font-size: 0.55rem;
-                    }
                 }
             }
         }

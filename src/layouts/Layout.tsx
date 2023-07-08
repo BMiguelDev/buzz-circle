@@ -4,7 +4,11 @@ import GlobalStyles from "../components/styles/Global";
 import { StyledFooter, StyledNavbar } from "../components/styles/Layout.styles";
 import { useEffect, useRef } from "react";
 
-const Layout = () => {
+interface PropTypes {
+    className?: string;
+}
+
+const Layout = ({ className }: PropTypes) => {
     const appDivRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -25,7 +29,7 @@ const Layout = () => {
     }, []);
 
     return (
-        <div className="app_container" ref={appDivRef}>
+        <div className={className} ref={appDivRef}>
             <GlobalStyles />
             <StyledNavbar />
             <main>
