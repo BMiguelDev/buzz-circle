@@ -29,8 +29,8 @@ export const StyledPostsList = styled(PostsList)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         margin: 1.5rem 8%;
         gap: 1.5rem;
 
@@ -203,8 +203,8 @@ export const StyledAddPostPage = styled(AddPostPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         margin: 3%;
 
         .add_post_container {
@@ -335,22 +335,22 @@ export const StyledPostItem = styled(PostItem)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         padding: 0.5rem 0.75rem;
         gap: 0.5rem;
+        -webkit-tap-highlight-color: transparent; 
 
         &:hover {
             box-shadow: unset;
         }
-
         .post_top_row {
             width: 100%;
             gap: 5%;
 
             .author_and_time {
-                width: 70%;
                 justify-content: flex-start;
+                max-width: 70%;
             }
 
             .single_post_link {
@@ -418,8 +418,8 @@ export const StyledReactionButtons = styled(ReactionButtons)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         flex-wrap: wrap;
         gap: 0.3rem;
 
@@ -446,9 +446,11 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
     .single_post_container {
         padding: 0.5rem;
         margin: auto 20%;
-        border: 1px solid whitesmoke;
+        border: .05rem solid var(--app-intermediate-color);
         border-radius: 10px;
         padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
 
         .post_top_row {
             display: flex;
@@ -514,6 +516,64 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 margin: 0;
                 word-wrap: break-word;
                 color: var(--app-text-main-color);
+            }
+        }
+    }
+
+
+    // Mobile smartphone portrait screens (very small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+        margin: 3%;
+
+        .single_post_container {
+            margin: 1.25rem 5%;
+            gap: .5rem;
+            padding: 0.75rem .85rem;
+
+            .post_top_row {
+                width: 100%;
+                gap: 2.5%;
+
+                .author_and_time {
+                    justify-content: flex-start;
+                    max-width: 64%;
+                    gap: 0.5rem;
+                }
+
+                .function_button_row {
+                    gap: .45rem;
+                    max-width: 36%;
+
+                    a {
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+
+                    button {
+                        padding: 0;
+
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+                }
+            }
+
+            .post_text {
+                padding: 0.65rem 0.5rem;
+                gap: 0.75rem;
+
+                h2 {
+                    font-size: 1.075rem;
+                    letter-spacing: 0.03rem;
+                }
+
+                p {
+                    line-height: 1.075rem;
+                    font-size: 0.875rem;
+                }
             }
         }
     }
@@ -655,8 +715,8 @@ export const StyledEditPostPage = styled(EditPostPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         margin: 3%;
 
         .edit_post_container {
@@ -751,10 +811,10 @@ export const StyledPostAuthor = styled(PostAuthor)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         gap: 0.4rem;
-        width: 50%;
+        flex-basis: min-content;
 
         &:hover {
             span {
@@ -779,9 +839,8 @@ export const StyledTimePeriod = styled(TimePeriod)`
     color: var(--app-text-support-color);
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         font-size: 0.725rem;
-        width: 50%;
     }
 `;

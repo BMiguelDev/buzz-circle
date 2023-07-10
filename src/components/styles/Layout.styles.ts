@@ -106,8 +106,8 @@ export const StyledNavbar = styled(Navbar)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         nav {
             padding: 0.35rem 0.725rem;
 
@@ -211,8 +211,8 @@ export const StyledFooter = styled(Footer)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         padding: 0.15rem 1rem;
         gap: 0;
         //height: 5%;
@@ -260,7 +260,9 @@ export const StyledFooter = styled(Footer)`
 
 
 
-    // Media query for mobile content (portrait)
+
+
+    /* // Media query for mobile content (portrait)
     @media screen and (max-width: 500px) and (min-height: 501px) {
         padding: 0.125rem 0.5rem;
 
@@ -386,5 +388,5 @@ export const StyledFooter = styled(Footer)`
                 translate: 0 0;
             }
         }
-    }
+    } */
 `;

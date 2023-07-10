@@ -31,8 +31,8 @@ export const StyledSmallButton = styled(SmallButton)`
 
     
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         padding: 0.2rem 0.65rem;
         font-size: 0.665rem;
         letter-spacing: 0.025rem;
@@ -42,5 +42,9 @@ export const StyledSmallButton = styled(SmallButton)`
         svg {
             font-size: .775rem;
         }
+
+        &:hover {
+        scale: 1;
+    }
     }
 `;

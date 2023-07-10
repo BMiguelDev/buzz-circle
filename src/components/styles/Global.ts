@@ -17,6 +17,15 @@ const GlobalStyles = createGlobalStyle`
         scroll-behavior: smooth;
     }
 
+    // Remove blue highlight of 
+    input,
+    textarea,
+    button,
+    select,
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
 
     // Variables
     :root {

@@ -64,8 +64,8 @@ export const StyledUsersList = styled(UsersList)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         margin: 1.5rem 8%;
         gap: 1.5rem;
 
@@ -172,8 +172,8 @@ export const StyledUserPage = styled(UserPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) and (max-height: 400px),
-        screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
+        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
         margin: 3%;
 
         .user_page_container {

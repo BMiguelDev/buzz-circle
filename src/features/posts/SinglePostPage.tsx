@@ -5,6 +5,7 @@ import { useGetPostsQuery, useRemovePostMutation } from "./postsSlice";
 import { StyledSmallButton } from "../../components/styles/SmallButton.styles";
 import { StyledBackButton } from "../../components/styles/BackButton.styles";
 import { StyledLoadingSpinner } from "../../components/styles/LoadingSpinner.styles";
+import { useEffect } from "react";
 
 interface PropTypes {
     className?: string;
@@ -20,6 +21,10 @@ const SinglePostPage = ({ className }: PropTypes) => {
             isLoading,
         }),
     });
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const [removePost] = useRemovePostMutation();
 
