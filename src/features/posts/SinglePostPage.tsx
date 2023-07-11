@@ -22,6 +22,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
         }),
     });
 
+    // Make page scroll to the top on load (to prevent page from begin scrolled down on smaller devices)
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

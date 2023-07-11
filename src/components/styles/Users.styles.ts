@@ -64,8 +64,7 @@ export const StyledUsersList = styled(UsersList)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 1.5rem 8%;
         gap: 1.5rem;
 
@@ -98,6 +97,49 @@ export const StyledUsersList = styled(UsersList)`
 
                     span {
                         font-size: 0.82rem;
+                        line-height: .85rem;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        margin: 1.5rem 12%;
+        gap: 1.65rem;
+
+        h2 {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+
+        ul {
+            justify-content: space-around;
+            row-gap: 0.75rem;
+            align-items: center;
+
+            li {
+                width: 45%;
+                height: 2.5rem;
+                display: flex;
+
+                a {
+                    padding: 0.25rem 0.5rem;
+                    gap: 0.45rem;
+                    align-items: center;
+
+                    svg {
+                        padding: 0.25rem;
+                        border: 0.1rem solid var(--app-primary-color);
+                        font-size: 0.615rem;
+                    }
+
+                    span {
+                        font-size: 0.835rem;
+                        line-height: .935rem;
                     }
                 }
             }
@@ -137,7 +179,7 @@ export const StyledUserPage = styled(UserPage)`
                 cursor: pointer;
                 display: flex;
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.75rem;
 
                 &:hover {
                     box-shadow: 0 0 0.265rem 0.115rem var(--app-intermediate-color);
@@ -147,6 +189,7 @@ export const StyledUserPage = styled(UserPage)`
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
+                    align-items: center;
 
                     & > p::before {
                         content: "Posted ";
@@ -172,8 +215,7 @@ export const StyledUserPage = styled(UserPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
         .user_page_container {
@@ -194,7 +236,7 @@ export const StyledUserPage = styled(UserPage)`
                     
                     padding: .6rem .7rem;
                     
-                    gap: 0.65rem;
+                    gap: 0.7rem;
 
                     .user_post_top_row {
                         gap: .5rem;
@@ -208,6 +250,46 @@ export const StyledUserPage = styled(UserPage)`
 
                     h3 {
                         font-size: .95rem;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        margin: 3%;
+
+        .user_page_container {
+            margin: 1.25rem 12%;
+            gap: 1.5rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.25rem;
+            }
+
+            ul {
+                gap: 1rem;
+
+                li {
+                    border: 0.1rem solid var(--app-intermediate-color);
+                    padding: .7rem .75rem;
+                    gap: 0.75rem;
+
+                    .user_post_top_row {
+                        gap: .75rem;
+
+                        a {
+                            text-align: center;
+                            width: fit-content;
+                        }
+                    }
+
+                    h3 {
+                        font-size: .97rem;
                     }
                 }
             }

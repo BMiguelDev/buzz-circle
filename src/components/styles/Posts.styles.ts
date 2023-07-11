@@ -29,8 +29,7 @@ export const StyledPostsList = styled(PostsList)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 1.5rem 8%;
         gap: 1.5rem;
 
@@ -42,6 +41,22 @@ export const StyledPostsList = styled(PostsList)`
 
         .postslist_posts {
             gap: 1rem;
+        }
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        margin: 1.75rem 12%;
+        gap: 1.65rem;
+
+        .postslist_title {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+
+        .postslist_posts {
+            gap: 1.25rem;
         }
     }
 `;
@@ -203,8 +218,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
         .add_post_container {
@@ -261,6 +275,73 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     min-width: 50%;
                     max-width: 75%;
                     padding: 0.25rem 0.65rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
+        margin: 3%;
+
+        .add_post_container {
+            margin: 1.25rem 12%;
+            gap: 1.5rem;
+            padding: 0.75rem 1.15rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.25rem;
+            }
+
+            form {
+                gap: 1.15rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 100%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.925rem;
+                    }
+
+                    textarea {
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.875rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.875rem;
+
+                        option {
+                            font-size: 0.875rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 100%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.865rem;
+                    }
+                }
+
+                button {
+                    font-size: 0.915rem;
+                    margin-top: 0.3rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.25rem 0.75rem;
 
                     &:hover:not(:disabled) {
                         scale: 1;
@@ -335,11 +416,10 @@ export const StyledPostItem = styled(PostItem)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         padding: 0.5rem 0.75rem;
         gap: 0.5rem;
-        -webkit-tap-highlight-color: transparent; 
+        -webkit-tap-highlight-color: transparent;
 
         &:hover {
             box-shadow: unset;
@@ -374,6 +454,50 @@ export const StyledPostItem = styled(PostItem)`
             p {
                 line-height: 1.05rem;
                 font-size: 0.85rem;
+            }
+        }
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        padding: 0.675rem 0.875rem;
+        gap: 0.5rem;
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover {
+            box-shadow: unset;
+        }
+        .post_top_row {
+            width: 100%;
+            gap: 5%;
+
+            .author_and_time {
+                justify-content: flex-start;
+                max-width: 60%;
+                gap: 0.65rem;
+            }
+
+            .single_post_link {
+                max-width: 40%;
+
+                &:hover {
+                    scale: 1;
+                }
+            }
+        }
+
+        .post_text {
+            padding: 0.675rem 0.55rem;
+            gap: 0.775rem;
+
+            h2 {
+                font-size: 1.075rem;
+                letter-spacing: 0.0325rem;
+            }
+
+            p {
+                line-height: 1.075rem;
+                font-size: 0.875rem;
             }
         }
     }
@@ -418,8 +542,7 @@ export const StyledReactionButtons = styled(ReactionButtons)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         flex-wrap: wrap;
         gap: 0.3rem;
 
@@ -438,6 +561,27 @@ export const StyledReactionButtons = styled(ReactionButtons)`
             }
         }
     }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        flex-wrap: wrap;
+        gap: 0.35rem;
+
+        .reaction_button {
+            gap: 0.175rem;
+            background-color: transparent;
+            font-size: 0.735rem;
+            padding: 0.175rem 0.425rem 0.225rem 0.425rem;
+
+            &:hover:not(:active):not(:focus) {
+                background-color: transparent;
+            }
+
+            p {
+                font-size: 0.625rem;
+            }
+        }
+    }
 `;
 
 export const StyledSinglePostPage = styled(SinglePostPage)`
@@ -446,7 +590,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
     .single_post_container {
         padding: 0.5rem;
         margin: auto 20%;
-        border: .05rem solid var(--app-intermediate-color);
+        border: 0.05rem solid var(--app-intermediate-color);
         border-radius: 10px;
         padding: 1.5rem;
         display: flex;
@@ -520,16 +664,14 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
         }
     }
 
-
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
         .single_post_container {
             margin: 1.25rem 5%;
-            gap: .5rem;
-            padding: 0.75rem .85rem;
+            gap: 0.5rem;
+            padding: 0.75rem 0.85rem;
 
             .post_top_row {
                 width: 100%;
@@ -542,7 +684,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 }
 
                 .function_button_row {
-                    gap: .45rem;
+                    gap: 0.45rem;
                     max-width: 36%;
 
                     a {
@@ -573,6 +715,62 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 p {
                     line-height: 1.075rem;
                     font-size: 0.875rem;
+                }
+            }
+        }
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        margin: 3%;
+
+        .single_post_container {
+            margin: 1.25rem 9%;
+            gap: 0.5rem;
+            padding: 0.775rem 0.875rem;
+
+            .post_top_row {
+                width: 100%;
+                gap: 2.5%;
+
+                .author_and_time {
+                    justify-content: flex-start;
+                    max-width: 62.5%;
+                    gap: 0.65rem;
+                }
+
+                .function_button_row {
+                    gap: 0.5rem;
+                    max-width: 37.5%;
+
+                    a {
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+
+                    button {
+                        padding: 0;
+
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+                }
+            }
+
+            .post_text {
+                padding: 0.675rem 0.525rem;
+                gap: 0.775rem;
+
+                h2 {
+                    font-size: 1.1rem;
+                    letter-spacing: 0.0325rem;
+                }
+
+                p {
+                    line-height: 1.1rem;
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -715,8 +913,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
         .edit_post_container {
@@ -781,6 +978,73 @@ export const StyledEditPostPage = styled(EditPostPage)`
             }
         }
     }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        margin: 3%;
+
+        .edit_post_container {
+            margin: 1.25rem 12%;
+            gap: 1.5rem;
+            padding: 0.75rem 1.15rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.25rem;
+            }
+
+            form {
+                gap: 1.15rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 100%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.925rem;
+                    }
+
+                    textarea {
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.875rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.15rem 0.5rem;
+                        font-size: 0.875rem;
+
+                        option {
+                            font-size: 0.875rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 100%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.865rem;
+                    }
+                }
+
+                button {
+                    font-size: 0.915rem;
+                    margin-top: 0.3rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.25rem 0.75rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostAuthor = styled(PostAuthor)`
@@ -811,8 +1075,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         gap: 0.4rem;
         flex-basis: min-content;
 
@@ -831,6 +1094,27 @@ export const StyledPostAuthor = styled(PostAuthor)`
             font-size: 0.765rem;
         }
     }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        gap: 0.5rem;
+        flex-basis: min-content;
+
+        &:hover {
+            span {
+                color: var(--app-primary-color);
+            }
+        }
+
+        svg {
+            padding: 0.225rem;
+            font-size: 0.675rem;
+        }
+
+        span {
+            font-size: 0.785rem;
+        }
+    }
 `;
 
 export const StyledTimePeriod = styled(TimePeriod)`
@@ -839,8 +1123,13 @@ export const StyledTimePeriod = styled(TimePeriod)`
     color: var(--app-text-support-color);
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px),
+        */ /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) */ {
         font-size: 0.725rem;
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        font-size: 0.75rem;
     }
 `;

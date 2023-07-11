@@ -15,10 +15,11 @@ export const StyledSmallButton = styled(SmallButton)`
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: .45rem;
+    gap: 0.45rem;
+    text-align: center;
 
     svg {
-        font-size: .85rem;
+        font-size: 0.85rem;
     }
 
     p {
@@ -29,22 +30,44 @@ export const StyledSmallButton = styled(SmallButton)`
         scale: ${(props) => (props.buttonTitle !== "Back" ? 1.065 : 1)};
     }
 
-    
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         padding: 0.2rem 0.65rem;
         font-size: 0.665rem;
         letter-spacing: 0.025rem;
-        gap: .45rem;
-        text-align: center;
+        gap: 0.45rem;
 
         svg {
-            font-size: .775rem;
+            font-size: 0.775rem;
         }
 
         &:hover {
-        scale: 1;
+            scale: 1;
+        }
+
+        p {
+            line-height: .775rem;
+        }
     }
+
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.03rem;
+        gap: 0.45rem;
+
+        svg {
+            font-size: 0.8rem;
+        }
+
+        &:hover {
+            scale: 1;
+        }
+
+        p {
+            line-height: .775rem;
+        }
     }
 `;

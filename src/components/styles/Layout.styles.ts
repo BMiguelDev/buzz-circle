@@ -106,8 +106,7 @@ export const StyledNavbar = styled(Navbar)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         nav {
             padding: 0.35rem 0.725rem;
 
@@ -135,6 +134,46 @@ export const StyledNavbar = styled(Navbar)`
 
                     .navbar_link_active {
                         font-size: 0.925rem;
+                    }
+
+                    &:hover {
+                        translate: 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        nav {
+            padding: 0.45rem 1rem;
+
+            a {
+                gap: 0.15rem;
+
+                svg {
+                    font-size: 1.1rem;
+                }
+
+                h1 {
+                    letter-spacing: 0.04rem;
+                    font-size: 1.3rem;
+                }
+            }
+
+            .navbar_links_container {
+                gap: 1rem;
+                padding-top: 0.1rem;
+
+                li {
+                    .navbar_link {
+                        font-size: 0.9rem;
+                    }
+
+                    .navbar_link_active {
+                        font-size: 1rem;
                     }
 
                     &:hover {
@@ -211,8 +250,7 @@ export const StyledFooter = styled(Footer)`
     }
 
     // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px) ,*/
-        /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px)*/ {
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         padding: 0.15rem 1rem;
         gap: 0;
         //height: 5%;
@@ -226,8 +264,6 @@ export const StyledFooter = styled(Footer)`
         }
 
         .footer_icon_container {
-            gap: 0.675rem;
-
             gap: 0.35rem;
 
             a {
@@ -257,59 +293,16 @@ export const StyledFooter = styled(Footer)`
     }
 
 
-
-
-
-
-
-    /* // Media query for mobile content (portrait)
-    @media screen and (max-width: 500px) and (min-height: 501px) {
-        padding: 0.125rem 0.5rem;
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+        padding: 0.2rem 1rem;
+        gap: 0;
 
         .footer_text {
             p {
-                word-spacing: 0.025rem;
-                font-size: 0.625rem;
-            }
-        }
-
-        .footer_icon_container {
-            gap: 0.35rem;
-
-            a {
-                width: 1.2rem;
-                height: 1.2rem;
-                padding: 0.2rem;
-
-                svg {
-                    font-size: 0.75rem;
-                }
-
-                &:hover {
-                    svg {
-                        color: var(--footer-color);
-                        translate: 0 0;
-                    }
-                }
-            }
-
-            a:nth-of-type(1),
-            a:nth-of-type(2) {
-                svg {
-                    font-size: 0.65rem;
-                }
-            }
-        }
-    }
-
-    // Media queries for mobile content (landscape)
-    @media screen and (max-height: 650px) and (min-width: 501px) and (max-width: 1000px) {
-        padding: 0.15rem 0.5rem;
-
-        .footer_text {
-            p {
-                word-spacing: 0.025rem;
-                font-size: 0.725rem;
+                letter-spacing: 0.04rem;
+                word-spacing: 0.04rem;
+                font-size: 0.65rem;
             }
         }
 
@@ -317,12 +310,12 @@ export const StyledFooter = styled(Footer)`
             gap: 0.5rem;
 
             a {
-                width: 1.55rem;
-                height: 1.55rem;
-                padding: 0.1rem;
+                width: 1.05rem;
+                height: 1.05rem;
+                padding: 0.225rem;
 
                 svg {
-                    font-size: 0.975rem;
+                    font-size: 0.725rem;
                 }
 
                 &:hover {
@@ -336,57 +329,9 @@ export const StyledFooter = styled(Footer)`
             a:nth-of-type(1),
             a:nth-of-type(2) {
                 svg {
-                    font-size: 0.875rem;
+                    font-size: 0.625rem;
                 }
             }
         }
     }
-
-    // Media queries for small tablet content (square)
-    @media screen and (min-height: 650px) and (min-width: 501px) and (max-width: 700px) {
-        .footer_text {
-            p {
-                word-spacing: 0.045rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        .footer_icon_container {
-            gap: 0.675rem;
-
-            a {
-                width: 1.75rem;
-                height: 1.75rem;
-                padding: 0.1rem;
-
-                svg {
-                    font-size: 1.1rem;
-                }
-
-                &:hover {
-                    svg {
-                        color: var(--footer-color);
-                        translate: 0 0;
-                    }
-                }
-            }
-
-            a:nth-of-type(1),
-            a:nth-of-type(2) {
-                svg {
-                    font-size: 1rem;
-                }
-            }
-        }
-    }
-
-    // Media queries for tablet content (portrait)
-    @media screen and (min-height: 650px) and (min-width: 701px) and (max-width: 1000px) {
-        .footer_icon_container {
-            a:hover svg {
-                color: var(--footer-color);
-                translate: 0 0;
-            }
-        }
-    } */
 `;
