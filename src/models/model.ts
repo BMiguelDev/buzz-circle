@@ -46,3 +46,20 @@ export interface APIUserType {
         bs: string
     }
 }
+
+// Type definition for the theme used in styled components
+export interface ThemeType {
+    appBgColor: string;
+    appBgColorTransparent: string;
+    appTitleColor: string;
+    appTextMainColor: string;
+    appTextSupportColor: string;
+    appPrimaryColor: string;
+    appPrimaryColorTransparent: string;
+    appSecondaryColor: string;
+    appSecondaryColorTransparent: string;
+    appSecondaryColorSupport: string;
+    appSecondaryColorSupport2: string;
+    appIntermediateColor: string;
+    appIntermediateSupportColor: string;
+}

@@ -144,9 +144,5 @@ export const {
 // - show author image instead of icon (show icon only for authors with no image)
 // - add user picture to user page design later
 // - make app responsive
-// - add theme to styled components and then add it to my portfolio's skills
-    // - https://styled-components.com/docs/advanced
-    // - https://dev.to/aromanarguello/how-to-use-themes-in-styled-components-49h
-// - recheck app's color pallete (purple)
 // - Add dummy data in case server can't be reached?
 // - maybe add pagination to users page, posts page and user posts page

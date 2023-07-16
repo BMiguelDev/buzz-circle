@@ -19,7 +19,7 @@ export const StyledPostsList = styled(PostsList)`
         font-weight: bold;
         margin: 0;
         text-indent: 1rem;
-        color: var(--app-intermediate-color);
+        color: ${(props) => props.theme.appIntermediateColor};
     }
 
     .postslist_posts {
@@ -73,12 +73,12 @@ const dangerPulse = keyframes`
   }
 `;
 
-const dangerTextPulse = keyframes`
+const dangerTextPulse = (color: string) => keyframes`
  50% {
     color: red;
   }
   100% {
-    color: var(--app-text-main-color);
+    color: ${color};
   }
 `;
 
@@ -87,7 +87,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
 
     .add_post_container {
         margin: auto 20%;
-        border: 0.05rem solid var(--app-intermediate-color);
+        border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
         border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
@@ -97,7 +97,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
         h2 {
             margin: 0;
             text-indent: 1rem;
-            color: var(--app-intermediate-color);
+            color: ${(props) => props.theme.appIntermediateColor};
         }
 
         form {
@@ -112,7 +112,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
 
                 &.input_max_limit {
                     label {
-                        animation: ${dangerTextPulse} 0.7s ease-out 2 forwards;
+                        animation: ${(props) => dangerTextPulse(props.theme.appTextMainColor)} 0.7s ease-out 2 forwards;
                     }
 
                     div {
@@ -147,22 +147,22 @@ export const StyledAddPostPage = styled(AddPostPage)`
 
                 label {
                     width: fit-content;
-                    color: var(--app-text-main-color);
+                    color: ${(props) => props.theme.appTextMainColor};
                 }
 
                 input,
                 textarea,
                 select {
                     font: inherit;
-                    box-shadow: 0 0 0.2rem 0.075rem var(--app-text-support-color);
+                    box-shadow: 0 0 0.2rem 0.075rem ${(props) => props.theme.appTextSupportColor};
                     border: none;
-                    background-color: var(--app-intermediate-color);
+                    background-color: ${(props) => props.theme.appIntermediateSupportColor};
                     border-radius: 0.35rem;
-                    color: var(--app-secondary-color);
+                    color: ${(props) => props.theme.appSecondaryColorSupport2};
 
                     &:focus {
-                        outline: 0.1rem solid var(--app-primary-color);
-                        box-shadow: 0 0 0.25rem 0.1rem var(--app-intermediate-color);
+                        outline: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
+                        box-shadow: 0 0 0.25rem 0.1rem ${(props) => props.theme.appIntermediateColor};
                     }
                 }
 
@@ -200,14 +200,14 @@ export const StyledAddPostPage = styled(AddPostPage)`
                 align-self: center;
                 padding: 0.3rem 0.5rem;
                 border: none;
-                background-color: var(--app-secondary-color-support);
-                color: var(--app-text-main-color);
+                background-color: ${(props) => props.theme.appSecondaryColorSupport};
+                color: ${(props) => props.theme.appTitleColor};
                 letter-spacing: 0.025rem;
                 transition: all 0.1s ease-in-out;
 
                 &:disabled {
-                    background-color: var(--app-text-support-color);
-                    color: var(--app-bg-color-transparent);
+                    background-color: ${(props) => props.theme.appTextSupportColor};
+                    color: ${(props) => props.theme.appBgColorTransparent};
                 }
 
                 &:hover:not(:disabled) {
@@ -353,7 +353,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
 `;
 
 export const StyledPostItem = styled(PostItem)`
-    border: 0.05rem solid var(--app-intermediate-color);
+    border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
     border-radius: 0.65rem;
     padding: 1rem;
     transition: all 0.05s ease-in-out;
@@ -363,7 +363,7 @@ export const StyledPostItem = styled(PostItem)`
     gap: 0.5rem;
 
     &:hover {
-        box-shadow: 0 0 0.265rem 0.115rem var(--app-intermediate-color);
+        box-shadow: 0 0 0.265rem 0.115rem ${(props) => props.theme.appIntermediateColor};
     }
 
     .post_top_row {
@@ -395,7 +395,7 @@ export const StyledPostItem = styled(PostItem)`
         gap: 0.85rem;
 
         h2 {
-            color: var(--app-intermediate-color);
+            color: ${(props) => props.theme.appIntermediateColor};
             margin: 0;
             font-size: 1.3rem;
             letter-spacing: 0.035rem;
@@ -410,7 +410,7 @@ export const StyledPostItem = styled(PostItem)`
             line-height: 1.25rem;
             font-size: 1rem;
             margin: 0;
-            color: var(--app-text-main-color);
+            color: ${(props) => props.theme.appTextMainColor};
             word-wrap: break-word;
         }
     }
@@ -515,7 +515,7 @@ export const StyledReactionButtons = styled(ReactionButtons)`
         align-items: center;
         gap: 0.25rem;
         background-color: transparent;
-        color: var(--app-text-main-color);
+        color: ${(props) => props.theme.appTextMainColor};
         font-size: 0.9rem;
         cursor: pointer;
         padding: 0.2rem 0.55rem 0.25rem 0.55rem;
@@ -527,7 +527,7 @@ export const StyledReactionButtons = styled(ReactionButtons)`
 
         &:active {
             scale: 1.1;
-            box-shadow: 0 0 1rem 0.1rem var(--app-primary-color);
+            box-shadow: 0 0 1rem 0.1rem ${(props) => props.theme.appPrimaryColor};
         }
 
         &:hover:not(:active):not(:focus) {
@@ -590,7 +590,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
     .single_post_container {
         padding: 0.5rem;
         margin: auto 20%;
-        border: 0.05rem solid var(--app-intermediate-color);
+        border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
         border-radius: 10px;
         padding: 1.5rem;
         display: flex;
@@ -643,7 +643,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
             gap: 0.85rem;
 
             h2 {
-                color: var(--app-intermediate-color);
+                color: ${(props) => props.theme.appIntermediateColor};
                 margin: 0;
                 font-size: 1.4rem;
                 letter-spacing: 0.035rem;
@@ -659,7 +659,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 font-size: 1.05rem;
                 margin: 0;
                 word-wrap: break-word;
-                color: var(--app-text-main-color);
+                color: ${(props) => props.theme.appTextMainColor};
             }
         }
     }
@@ -782,7 +782,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
 
     .edit_post_container {
         margin: auto 20%;
-        border: 0.05rem solid var(--app-intermediate-color);
+        border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
         border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
@@ -792,7 +792,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
         h2 {
             margin: 0;
             text-indent: 1rem;
-            color: var(--app-intermediate-color);
+            color: ${(props) => props.theme.appIntermediateColor};
         }
 
         form {
@@ -807,7 +807,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
 
                 &.input_max_limit {
                     label {
-                        animation: ${dangerTextPulse} 0.7s ease-out 2 forwards;
+                        animation: ${(props) => dangerTextPulse(props.theme.appTextMainColor)} 0.7s ease-out 2 forwards;
                     }
 
                     div {
@@ -842,22 +842,22 @@ export const StyledEditPostPage = styled(EditPostPage)`
 
                 label {
                     width: fit-content;
-                    color: var(--app-text-main-color);
+                    color: ${(props) => props.theme.appTextMainColor};
                 }
 
                 input,
                 textarea,
                 select {
                     font: inherit;
-                    box-shadow: 0 0 0.2rem 0.075rem var(--app-text-support-color);
+                    box-shadow: 0 0 0.2rem 0.075rem ${(props) => props.theme.appTextSupportColor};
                     border: none;
-                    background-color: var(--app-intermediate-color);
+                    background-color: ${(props) => props.theme.appIntermediateSupportColor};
                     border-radius: 0.35rem;
-                    color: var(--app-secondary-color);
+                    color: ${(props) => props.theme.appSecondaryColorSupport2};
 
                     &:focus {
-                        outline: 0.1rem solid var(--app-primary-color);
-                        box-shadow: 0 0 0.25rem 0.1rem var(--app-intermediate-color);
+                        outline: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
+                        box-shadow: 0 0 0.25rem 0.1rem ${(props) => props.theme.appIntermediateColor};
                     }
                 }
 
@@ -895,14 +895,14 @@ export const StyledEditPostPage = styled(EditPostPage)`
                 align-self: center;
                 padding: 0.3rem 0.5rem;
                 border: none;
-                background-color: var(--app-secondary-color-support);
-                color: var(--app-text-main-color);
+                background-color: ${(props) => props.theme.appSecondaryColorSupport};
+                color: ${(props) => props.theme.appTitleColor};
                 letter-spacing: 0.025rem;
                 transition: all 0.1s ease-in-out;
 
                 &:disabled {
-                    background-color: var(--app-text-support-color);
-                    color: var(--app-bg-color-transparent);
+                    background-color: ${(props) => props.theme.appTextSupportColor};
+                    color: ${(props) => props.theme.appBgColorTransparent};
                 }
 
                 &:hover:not(:disabled) {
@@ -1056,21 +1056,21 @@ export const StyledPostAuthor = styled(PostAuthor)`
 
     &:hover {
         span {
-            color: var(--app-intermediate-color);
+            color: ${(props) => props.theme.appIntermediateColor};
         }
     }
 
     svg {
-        color: var(--app-primary-color);
+        color: ${(props) => props.theme.appPrimaryColor};
         padding: 0.25rem;
-        border: 0.15rem solid var(--app-primary-color);
+        border: 0.15rem solid ${(props) => props.theme.appPrimaryColor};
         border-radius: 2rem;
         font-size: 0.75rem;
     }
 
     span {
         font-size: 0.95rem;
-        color: var(--app-primary-color);
+        color: ${(props) => props.theme.appPrimaryColor};
         transition: all 0.1s ease-in-out;
     }
 
@@ -1081,7 +1081,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
 
         &:hover {
             span {
-                color: var(--app-primary-color);
+                color: ${(props) => props.theme.appPrimaryColor};
             }
         }
 
@@ -1102,7 +1102,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
 
         &:hover {
             span {
-                color: var(--app-primary-color);
+                color: ${(props) => props.theme.appPrimaryColor};
             }
         }
 
@@ -1120,7 +1120,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
 export const StyledTimePeriod = styled(TimePeriod)`
     margin: 0;
     font-size: 0.9rem;
-    color: var(--app-text-support-color);
+    color: ${(props) => props.theme.appTextSupportColor};
 
     // Mobile smartphone portrait screens (very small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px),

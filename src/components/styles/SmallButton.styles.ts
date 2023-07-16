@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import SmallButton from "../SmallButton";
 
+
 export const StyledSmallButton = styled(SmallButton)`
     margin: 0;
     padding: 0.35rem 0.85rem;
     font-size: 0.775rem;
     font-weight: bold;
     text-decoration: none;
-    background-color: var(--app-secondary-color-support);
-    color: var(--app-text-main-color);
+    background-color: ${(props) => props.theme.appSecondaryColorSupport};
+    color: ${(props) => props.theme.appTitleColor};
     border-radius: 2rem;
     letter-spacing: 0.025rem;
     transition: all 0.1s ease-in-out;

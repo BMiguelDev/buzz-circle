@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons";
+import { faHashtag, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface PropTypes {
+    toggleIsDarkMode: () => void;
+    isDarkMode: boolean;
     className?: string;
 }
 
-const Navbar = ({ className }: PropTypes) => {
+const Navbar = ({ className, toggleIsDarkMode, isDarkMode }: PropTypes) => {
     return (
         <header className={className}>
             <nav>
@@ -44,6 +46,9 @@ const Navbar = ({ className }: PropTypes) => {
                     </li>
                 </ul>
             </nav>
+            <button className="darkmode_button_container" onClick={toggleIsDarkMode}>
+                {isDarkMode ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} /> }
+            </button>
         </header>
     );
 };

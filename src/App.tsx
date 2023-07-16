@@ -3,13 +3,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import { StyledAddPostPage, StyledEditPostPage, StyledPostsList, StyledSinglePostPage } from "./components/styles/Posts.styles";
 import { StyledUserPage, StyledUsersList } from "./components/styles/Users.styles";
-import { StyledLayout } from "./components/styles/Layout.styles";
+import Layout from "./layouts/Layout";
 
 function App() {
     return (
         <Routes>
             {/* Here we are using "/buzz-circle" because Github pages requires the default path to match the "homepage" (in package.json) */}
-            <Route path="/buzz-circle" element={<StyledLayout />}>
+            <Route path="/buzz-circle" element={<Layout />}>
                 <Route index element={<StyledPostsList />} />
                 <Route path="post">
                     <Route index element={<StyledAddPostPage />} />

@@ -12,7 +12,7 @@ const SmallButton = ({ buttonTitle, className }: PropTypes) => {
         (buttonTitle === "Edit" || buttonTitle === "Delete") &&
             window.innerHeight >= 250 &&
             window.innerWidth >= 300 &&
-            window.innerWidth <= 600
+            window.innerWidth <= 550
     );
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const SmallButton = ({ buttonTitle, className }: PropTypes) => {
                 (buttonTitle === "Edit" || buttonTitle === "Delete") &&
                     window.innerHeight >= 250 &&
                     window.innerWidth >= 300 &&
-                    window.innerWidth <= 600
+                    window.innerWidth <= 550
             );
         };
         window.addEventListener("resize", handleResize);

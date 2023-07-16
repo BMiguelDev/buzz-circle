@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { ThemeType } from "../../models/model";
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
 
     // General page content
     * {
@@ -17,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
         scroll-behavior: smooth;
     }
 
-    // Remove blue highlight of 
+    // Remove blue highlight of buttons, links and inputs, when clicked on mobile screens
     input,
     textarea,
     button,
@@ -26,21 +27,44 @@ const GlobalStyles = createGlobalStyle`
         -webkit-tap-highlight-color: transparent;
     }
 
+    
+    // App content
+    .app_container {
+        background-color: ${(props) => props.theme.appBgColor}; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+
+        // Media query for unsuitable screens (mobile extremelly small)
+        @media screen and (max-width: 300px), screen and (max-height: 250px) {
+            
+            // App content
+            visibility: hidden;
+            overflow: hidden;
+
+            &::before {
+                position: fixed;
+                visibility: visible;
+                background: var(--app-bg-color);
+                color: var(--app-primary-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                content: "Your screen is too small to display this App :(";
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 10;
+            }
+        }
+    }
+
 
     // Variables
     :root {
-        --app-bg-color: rgb(32, 32, 32);
-        /* --app-bg-color: rgb(26,26,26); */
-        /* --app-bg-color: rgb(51, 51, 51); */
-        --app-bg-color-transparent: rgba(32 ,32 ,32, .5);
-        --app-text-main-color: rgb(239, 239, 239);
-        --app-text-support-color: rgb(130, 130, 130);
-        --app-primary-color: rgb(93, 160, 253);
-        --app-primary-color-transparent: rgba(93, 160, 253, .75);
-        --app-secondary-color: rgb(78, 10, 97);
-        --app-secondary-color-transparent: rgba(78, 10, 97, .5);
-        --app-secondary-color-support: rgb(110, 16, 136);
-        --app-intermediate-color: rgb(187, 216, 241);
         --footer-bg-color: rgb(18, 18, 18);
         --footer-color: rgb(231, 235, 235);
     }

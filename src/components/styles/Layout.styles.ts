@@ -2,47 +2,13 @@ import styled from "styled-components";
 
 import Navbar from "../../layouts/Navbar";
 import Footer from "../../layouts/Footer";
-import Layout from "../../layouts/Layout";
 
-export const StyledLayout = styled(Layout)`
-    // App content
-    background-color: var(--app-bg-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-
-    // Media query for unsuitable screens (mobile extremelly small)
-    @media screen and (max-width: 300px), screen and (max-height: 250px) {
-        //,
-        //screen and (max-height: 300px) and (max-width: 300px) {
-        // App content
-        visibility: hidden;
-        overflow: hidden;
-
-        &::before {
-            position: fixed;
-            visibility: visible;
-            background: var(--app-bg-color);
-            color: var(--app-primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            content: "Your screen is too small to display this App :(";
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 10;
-        }
-    }
-`;
 
 export const StyledNavbar = styled(Navbar)`
-    background-color: var(--app-secondary-color);
+    background-color: ${(props) => props.theme.appSecondaryColor};
     margin: 0;
-    border-bottom: 1px solid var(--app-secondary-color-support);
+    border-bottom: 1px solid ${(props) => props.theme.appSecondaryColorSupport};
+    position: relative;
 
     nav {
         display: flex;
@@ -58,7 +24,7 @@ export const StyledNavbar = styled(Navbar)`
             gap: 0.15rem;
             font-size: 1.05rem;
             font-weight: bold;
-            color: var(--app-text-main-color);
+            color: ${(props) => props.theme.appTitleColor};
             text-decoration: none;
 
             svg {
@@ -85,16 +51,16 @@ export const StyledNavbar = styled(Navbar)`
 
                 .navbar_link {
                     text-decoration: none;
-                    color: var(--app-intermediate-color);
+                    color: ${(props) => props.theme.appIntermediateColor};
                     transition: all 0.15s ease-in-out;
 
                     &:not(.navbar_link_active):hover {
-                        color: var(--app-primary-color);
+                        color: ${(props) => props.theme.appPrimaryColor};
                     }
                 }
 
                 .navbar_link_active {
-                    color: var(--app-primary-color);
+                    color: ${(props) => props.theme.appPrimaryColor};
                     font-size: 1.1rem;
                 }
 
@@ -104,6 +70,39 @@ export const StyledNavbar = styled(Navbar)`
             }
         }
     }
+
+    .darkmode_button_container {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.15rem;
+        height: 2.15rem;
+        padding: .5rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all .2s ease;
+        background-color: ${(props) => props.theme.appSecondaryColor};
+        border: none;
+        box-shadow: 0 0 .25rem .025rem ${(props) => props.theme.appTextSupportColor};
+
+        &:hover {
+            translate: 0% -8%;
+
+            svg {
+                color: ${(props) => props.theme.appPrimaryColor};
+            }
+        }
+
+        svg {
+            color: ${(props) => props.theme.appIntermediateColor};
+            font-size: 1.3rem;
+        }
+    }
+
 
     // Mobile smartphone portrait screens (very small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
@@ -140,6 +139,25 @@ export const StyledNavbar = styled(Navbar)`
                         translate: 0 0;
                     }
                 }
+            }
+        }
+
+        .darkmode_button_container {
+            margin: .55rem;
+            width: 1.55rem;
+            height: 1.55rem;
+            padding: .35rem;
+
+            &:hover {
+                translate: 0% 0%;
+
+                svg {
+                    color: ${(props) => props.theme.appIntermediateColor};
+                }
+            }
+
+            svg {
+                font-size: .975rem;
             }
         }
     }
@@ -180,6 +198,25 @@ export const StyledNavbar = styled(Navbar)`
                         translate: 0 0;
                     }
                 }
+            }
+        }
+
+        .darkmode_button_container {
+            margin: .65rem;
+            width: 1.75rem;
+            height: 1.75rem;
+            padding: .4rem;
+
+            &:hover {
+                translate: 0% 0%;
+
+                svg {
+                    color: ${(props) => props.theme.appIntermediateColor};
+                }
+            }
+
+            svg {
+                font-size: 1.1rem;
             }
         }
     }
@@ -235,7 +272,7 @@ export const StyledFooter = styled(Footer)`
 
             &:hover {
                 svg {
-                    color: var(--app-primary-color);
+                    color: ${(props) => props.theme.appPrimaryColor};
                     translate: 0 -12.5%;
                 }
             }

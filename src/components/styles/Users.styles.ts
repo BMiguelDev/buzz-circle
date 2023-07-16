@@ -13,7 +13,7 @@ export const StyledUsersList = styled(UsersList)`
         font-weight: bold;
         margin: 0;
         text-indent: 1rem;
-        color: var(--app-intermediate-color);
+        color: ${(props) => props.theme.appIntermediateColor};
     }
 
     ul {
@@ -27,7 +27,7 @@ export const StyledUsersList = styled(UsersList)`
 
         li {
             list-style: none;
-            border: 0.1rem solid var(--app-primary-color);
+            border: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
             border-radius: 0.5rem;
             /* width: fit-content;
             max-width: 40%; */
@@ -35,8 +35,8 @@ export const StyledUsersList = styled(UsersList)`
             transition: all 0.1s ease-in-out;
 
             &:hover {
-                background-color: var(--app-secondary-color);
-                box-shadow: 0 0 0.25rem 0.1rem var(--app-primary-color);
+                background-color: ${(props) => props.theme.appSecondaryColor};
+                box-shadow: 0 0 0.25rem 0.1rem ${(props) => props.theme.appPrimaryColor};
             }
 
             a {
@@ -48,16 +48,16 @@ export const StyledUsersList = styled(UsersList)`
                 gap: 0.4rem;
 
                 svg {
-                    color: var(--app-primary-color);
+                    color: ${(props) => props.theme.appPrimaryColor};
                     padding: 0.25rem;
-                    border: 0.15rem solid var(--app-primary-color);
+                    border: 0.15rem solid ${(props) => props.theme.appPrimaryColor};
                     border-radius: 2rem;
                     font-size: 0.75rem;
                 }
 
                 span {
                     font-size: 0.95rem;
-                    color: var(--app-primary-color);
+                    color: ${(props) => props.theme.appPrimaryColor};
                 }
             }
         }
@@ -91,7 +91,7 @@ export const StyledUsersList = styled(UsersList)`
 
                     svg {
                         padding: 0.25rem;
-                        border: 0.1rem solid var(--app-primary-color);
+                        border: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
                         font-size: 0.6rem;
                     }
 
@@ -133,7 +133,7 @@ export const StyledUsersList = styled(UsersList)`
 
                     svg {
                         padding: 0.25rem;
-                        border: 0.1rem solid var(--app-primary-color);
+                        border: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
                         font-size: 0.615rem;
                     }
 
@@ -160,7 +160,7 @@ export const StyledUserPage = styled(UserPage)`
         h2 {
             margin: 0;
             text-indent: 1rem;
-            color: var(--app-intermediate-color);
+            color: ${(props) => props.theme.appIntermediateColor};
         }
 
         ul {
@@ -172,7 +172,7 @@ export const StyledUserPage = styled(UserPage)`
             list-style: none;
 
             li {
-                border: 0.1rem solid var(--app-intermediate-color);
+                border: 0.1rem solid ${(props) => props.theme.appIntermediateColor};
                 border-radius: 0.65rem;
                 padding: 1em;
                 transition: all 0.05s ease-in-out;
@@ -182,7 +182,7 @@ export const StyledUserPage = styled(UserPage)`
                 gap: 0.75rem;
 
                 &:hover {
-                    box-shadow: 0 0 0.265rem 0.115rem var(--app-intermediate-color);
+                    box-shadow: 0 0 0.265rem 0.115rem ${(props) => props.theme.appIntermediateColor};
                 }
 
                 .user_post_top_row {
@@ -207,7 +207,7 @@ export const StyledUserPage = styled(UserPage)`
 
                 h3 {
                     margin: 0;
-                    color: var(--app-intermediate-color);
+                    color: ${(props) => props.theme.appIntermediateColor};
                     word-wrap: break-word;
                 }
             }
@@ -232,7 +232,7 @@ export const StyledUserPage = styled(UserPage)`
                 gap: 1rem;
 
                 li {
-                    border: 0.1rem solid var(--app-intermediate-color);
+                    border: 0.1rem solid ${(props) => props.theme.appIntermediateColor};
                     
                     padding: .6rem .7rem;
                     
@@ -275,7 +275,7 @@ export const StyledUserPage = styled(UserPage)`
                 gap: 1rem;
 
                 li {
-                    border: 0.1rem solid var(--app-intermediate-color);
+                    border: 0.1rem solid ${(props) => props.theme.appIntermediateColor};
                     padding: .7rem .75rem;
                     gap: 0.75rem;
 
