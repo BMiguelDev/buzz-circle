@@ -135,14 +135,13 @@ export const {
 
 // TODO:
 // - add authentication to backend/api (replaces api key); remove json-server and create express backend + sql database (hosted on railway or planetScale)
-    // https://www.youtube.com/watch?v=k6D5MakBktY
-    // https://auth0.com/blog/node-js-and-express-tutorial-building-and-securing-restful-apis/
-    // https://www.youtube.com/watch?v=mX6IoTXpopw
+// https://www.youtube.com/watch?v=k6D5MakBktY
+// https://auth0.com/blog/node-js-and-express-tutorial-building-and-securing-restful-apis/
+// https://www.youtube.com/watch?v=mX6IoTXpopw
 // - protected user route for changing profile (name, and image) (https://pqina.nl/blog/upload-image-with-nodejs/)
-// - protected edit and delete functionalities (only author can delete and edit) and remove author from add post 
+// - protected edit and delete functionalities (only author can delete and edit) and remove author from add post
 // - user can only give one reaction of each kind to a post
 // - show author image instead of icon (show icon only for authors with no image)
 // - add user picture to user page design later
 // - make app responsive
-// - Add dummy data in case server can't be reached?
 // - maybe add pagination to users page, posts page and user posts page

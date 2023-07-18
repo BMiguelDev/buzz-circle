@@ -23,7 +23,7 @@ export const StyledLoadingSpinner = styled(LoadingSpinner)`
 
     .loading_warning {
         font-size: 1rem;
-        color: v ${(props) => props.theme.appTextSupportColor};
+        color: ${(props) => props.theme.appTextSupportColor};
         margin: 0;
     }
 

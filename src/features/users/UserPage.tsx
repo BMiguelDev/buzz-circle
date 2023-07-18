@@ -37,7 +37,7 @@ const UserPage = ({ className }: PropTypes) => {
     if (!user) {
         return (
             <section className={className}>
-                <h2>Oops, User not found!</h2>
+                <h2 className="error_text">Oops, User not found!</h2>
             </section>
         );
     }
@@ -68,7 +68,12 @@ const UserPage = ({ className }: PropTypes) => {
             </>
         );
     } else if (isError || isErrorUser) {
-        content = <p>{JSON.stringify(error) || JSON.stringify(errorUser)}</p>;
+        content = (
+            <div className="error_message_container">
+                <p>Error: Failed to fetch user</p>
+            </div>
+        );
+        console.error("Error: Failed to fetch user \n", error || errorUser);
     }
 
     return <section className={className}>{content}</section>;

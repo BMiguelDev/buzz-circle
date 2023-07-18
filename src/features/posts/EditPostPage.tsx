@@ -67,7 +67,7 @@ const EditPostPage = ({ className }: PropTypes) => {
     if (!post) {
         return (
             <section className={className}>
-                <h2>Oops, Post not found!</h2>
+                <h2 className="error_text">Oops, Post not found!</h2>
             </section>
         );
     }
@@ -106,7 +106,7 @@ const EditPostPage = ({ className }: PropTypes) => {
                         navigate(`/buzz-circle/post/${post.id}`);
                     });
             } catch (error) {
-                console.error("Failed to save post", error);
+                console.error("Error: Failed to save post \n", error);
             }
         }
     };

@@ -8,6 +8,7 @@ export const StyledNavbar = styled(Navbar)`
     background-color: ${(props) => props.theme.appSecondaryColor};
     margin: 0;
     border-bottom: 1px solid ${(props) => props.theme.appSecondaryColorSupport};
+    transition: all 0.1s ease-in-out;
     position: relative;
 
     nav {

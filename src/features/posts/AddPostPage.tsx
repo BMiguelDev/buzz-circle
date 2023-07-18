@@ -69,7 +69,7 @@ const AddPostPage = ({ className }: PropTypes) => {
                         navigate("/buzz-circle");
                     });
             } catch (error) {
-                console.error("Failed to save post", error);
+                console.error("Error: Failed to save post \n", error);
             }
         }
     };

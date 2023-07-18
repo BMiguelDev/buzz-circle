@@ -8,20 +8,14 @@ interface PropTypes {
 
 const PostsList = ({ className }: PropTypes) => {
     // We get only the postIds data with the useGetPostsQuery so that not all posts are re-rendered when we change one of them
-    const {
-        postIds,
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    } = useGetPostsQuery('getPosts', {
+    const { postIds, isLoading, isSuccess, isError, error } = useGetPostsQuery("getPosts", {
         selectFromResult: ({ data, isLoading, isSuccess, isError, error }) => ({
             postIds: data?.ids,
             isLoading,
             isSuccess,
             isError,
-            error
-        })
+            error,
+        }),
     });
 
     let content;
@@ -30,18 +24,12 @@ const PostsList = ({ className }: PropTypes) => {
     } else if (isSuccess) {
         content = postIds?.map((postId) => <StyledPostItem key={postId} postId={Number(postId)} />);
     } else if (isError) {
-        if (error && "data" in error)
-            content = (
-                <div>
-                    <p>Error: {JSON.stringify(error.data)} </p>
-                </div>
-            );
-        else
-            content = (
-                <div>
-                    <p>Error: {JSON.stringify(error)} </p>
-                </div>
-            );
+        content = (
+            <div className="error_message_container">
+                <h4>Error: Failed to fetch posts list</h4>
+            </div>
+        );
+        console.error("Error: Failed to fetch posts \n", error);
     }
 
     return (

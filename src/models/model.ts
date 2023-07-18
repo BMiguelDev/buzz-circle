@@ -1,4 +1,3 @@
-// Type definition of the <posts> store variable
 export interface PostType {
     id: number;
     title: string;
@@ -15,7 +14,6 @@ export interface ReactionsType {
     celebration: number;
     mindblown: number;
 }
-
 
 export interface UserType {
     id: number;

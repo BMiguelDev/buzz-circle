@@ -32,18 +32,12 @@ const UsersList = ({ className }: PropTypes) => {
             } else return null;
         });
     } else if (isError) {
-        if ("data" in error)
-            content = (
-                <div>
-                    <p>Error: {JSON.stringify(error.data)} </p>
-                </div>
-            );
-        else
-            content = (
-                <div>
-                    <p>Error: {JSON.stringify(error)} </p>
-                </div>
-            );
+        content = (
+            <div className="error_message_container">
+                <h4>Error: Failed to fetch users list</h4>
+            </div>
+        );
+        console.error("Error: Failed to fetch users \n", error);
     }
 
     return (

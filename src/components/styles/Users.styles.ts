@@ -25,12 +25,15 @@ export const StyledUsersList = styled(UsersList)`
         justify-content: space-around;
         row-gap: 1rem;
 
+        .error_message_container {
+            text-align: center;
+            color: ${(props) => props.theme.appTextMainColor};
+        }
+
         li {
             list-style: none;
             border: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
             border-radius: 0.5rem;
-            /* width: fit-content;
-            max-width: 40%; */
             width: 42.5%;
             transition: all 0.1s ease-in-out;
 
@@ -149,6 +152,17 @@ export const StyledUsersList = styled(UsersList)`
 
 export const StyledUserPage = styled(UserPage)`
     margin: 2%;
+
+    .error_text {
+        text-align: center;
+        padding: 10%;
+        color: ${(props) => props.theme.appTextMainColor};
+    }
+
+    .error_message_container {
+        text-align: center;
+        color: ${(props) => props.theme.appTextMainColor};
+    }
 
     .user_page_container {
         margin: 2.5rem 30%;

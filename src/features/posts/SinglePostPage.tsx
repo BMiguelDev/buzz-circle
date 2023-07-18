@@ -34,7 +34,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
     if (!post) {
         return (
             <section className={className}>
-                <h2>Oops, Post not found!</h2>
+                <h2 className="error_text">Oops, Post not found!</h2>
             </section>
         );
     }
@@ -47,7 +47,7 @@ const SinglePostPage = ({ className }: PropTypes) => {
                     navigate("/buzz-circle");
                 });
         } catch (error) {
-            console.log("Unable to delete post", error);
+            console.error("Error: Unable to delete post \n", error);
         }
     };
 

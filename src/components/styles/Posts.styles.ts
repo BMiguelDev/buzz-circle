@@ -26,6 +26,11 @@ export const StyledPostsList = styled(PostsList)`
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
+
+        .error_message_container {
+            text-align: center;
+            color: ${(props) => props.theme.appTextMainColor};
+        }
     }
 
     // Mobile smartphone portrait screens (very small)
@@ -366,6 +371,11 @@ export const StyledPostItem = styled(PostItem)`
         box-shadow: 0 0 0.265rem 0.115rem ${(props) => props.theme.appIntermediateColor};
     }
 
+    .error_text {
+        text-align: center;
+        color: ${(props) => props.theme.appTextMainColor};
+    }
+
     .post_top_row {
         display: flex;
         flex-direction: row;
@@ -586,6 +596,12 @@ export const StyledReactionButtons = styled(ReactionButtons)`
 
 export const StyledSinglePostPage = styled(SinglePostPage)`
     margin: 2%;
+    
+    .error_text {
+        text-align: center;
+        padding: 10%;
+        color: ${(props) => props.theme.appTextMainColor};
+    }
 
     .single_post_container {
         padding: 0.5rem;
@@ -779,6 +795,12 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
 
 export const StyledEditPostPage = styled(EditPostPage)`
     margin: 2%;
+
+    .error_text {
+        text-align: center;
+        padding: 10%;
+        color: ${(props) => props.theme.appTextMainColor};
+    }
 
     .edit_post_container {
         margin: auto 20%;

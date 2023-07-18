@@ -1,9 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../components/styles/Global";
 import { StyledFooter, StyledNavbar } from "../components/styles/Layout.styles";
-import { useEffect, useRef, useState } from "react";
 
 const lightTheme: DefaultTheme = {
     appBgColor: "rgb(215, 217, 206)",

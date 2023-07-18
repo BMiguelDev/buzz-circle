@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         flex-direction: column;
         justify-content: space-between;
         min-height: 100vh;
+        transition: all 0.1s ease-in-out;
 
         // Media query for unsuitable screens (mobile extremelly small)
         @media screen and (max-width: 300px), screen and (max-height: 250px) {
