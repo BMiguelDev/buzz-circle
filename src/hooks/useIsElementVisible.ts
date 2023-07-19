@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Custom hook to determine if an element (referenced by <ref>) is visible in the page
-export const useIsElementVisible = (ref: HTMLDivElement | null) => {
+export const useIsElementVisible = (ref: HTMLElement | null) => {
     const [isIntersecting, setIsIntersecting] = useState(false);
 
     useEffect(() => {
