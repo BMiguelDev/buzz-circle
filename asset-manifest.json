@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/buzz-circle/static/js/main.e056128a.js",
+    "main.js": "/buzz-circle/static/js/main.0d5488c8.js",
     "index.html": "/buzz-circle/index.html",
-    "main.e056128a.js.map": "/buzz-circle/static/js/main.e056128a.js.map"
+    "main.0d5488c8.js.map": "/buzz-circle/static/js/main.0d5488c8.js.map"
   },
   "entrypoints": [
-    "static/js/main.e056128a.js"
+    "static/js/main.0d5488c8.js"
   ]
 }
