@@ -143,7 +143,8 @@ export const {
 // - user can only give one reaction of each kind to a post
 // - show author image instead of icon (show icon only for authors with no image)
 // - add user picture to user page design later
-// - make app responsive
-// - maybe improve infinite scrolling on users page, posts page and user posts page (maybe using "useInfiniteQuery" when my api/server supports a "page" query argument (each page having x number of results))
+// - maybe improve infinite scrolling on users page, posts page and user posts page (maybe using "useInfiniteQuery" when my api/server supports a "page" query argument (each page having x number of results)). 
 //      https://medium.com/@Jscrambler/implementing-infinite-scroll-with-react-query-and-flatlist-in-react-native-e219c30e3d0c
 //      https://blog.openreplay.com/infinite-scrolling-with-react-query/
+//      - also maybe trigger the query to get more items only when a "+" button is visible in page
+// - make app responsive
