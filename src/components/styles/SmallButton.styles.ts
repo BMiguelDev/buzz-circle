@@ -53,7 +53,7 @@ export const StyledSmallButton = styled(SmallButton)`
 
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         padding: 0.25rem 0.75rem;
         font-size: 0.7rem;
         letter-spacing: 0.03rem;
@@ -61,6 +61,26 @@ export const StyledSmallButton = styled(SmallButton)`
 
         svg {
             font-size: 0.8rem;
+        }
+
+        &:hover {
+            scale: 1;
+        }
+
+        p {
+            line-height: .775rem;
+        }
+    }
+
+     // Mobile tablet portrait screens
+     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.735rem;
+        letter-spacing: 0.0275rem;
+        gap: 0.45rem;
+
+        svg {
+            font-size: 0.825rem;
         }
 
         &:hover {

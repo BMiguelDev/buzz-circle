@@ -50,7 +50,7 @@ export const StyledPostsList = styled(PostsList)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         margin: 1.75rem 12%;
         gap: 1.65rem;
 
@@ -58,6 +58,22 @@ export const StyledPostsList = styled(PostsList)`
             text-indent: 0;
             text-align: center;
             font-size: 1.25rem;
+        }
+
+        .postslist_posts {
+            gap: 1.25rem;
+        }
+    }
+
+     // Mobile tablet portrait screens
+     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2.1rem 20%;
+        gap: 1.825rem;
+
+        .postslist_title {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.375rem;
         }
 
         .postslist_posts {
@@ -355,6 +371,73 @@ export const StyledAddPostPage = styled(AddPostPage)`
             }
         }
     }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2.5%;
+
+        .add_post_container {
+            margin: 1.25rem 15%;
+            gap: 1.75rem;
+            padding: 1.1rem 1.325rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.375rem;
+            }
+
+            form {
+                gap: 1.075rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 90%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.955rem;
+                    }
+
+                    textarea {
+                        padding: 0.175rem 0.5rem;
+                        font-size: 0.935rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.955rem;
+
+                        option {
+                            font-size: 0.915rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 90%;
+                        padding: 0.225rem 0.5rem;
+                        font-size: 0.865rem;
+                    }
+                }
+
+                button {
+                    font-size: 1.1rem;
+                    margin-top: 0.65rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.275rem 0.625rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostItem = styled(PostItem)`
@@ -469,7 +552,7 @@ export const StyledPostItem = styled(PostItem)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         padding: 0.675rem 0.875rem;
         gap: 0.5rem;
         -webkit-tap-highlight-color: transparent;
@@ -508,6 +591,51 @@ export const StyledPostItem = styled(PostItem)`
             p {
                 line-height: 1.075rem;
                 font-size: 0.875rem;
+            }
+        }
+    }
+
+     // Mobile tablet portrait screens
+     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        padding: 0.835rem 0.935rem;
+        gap: 0.5rem;
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover {
+            box-shadow: unset;
+        }
+        
+        .post_top_row {
+            width: 100%;
+            gap: 3.5%;
+
+            .author_and_time {
+                justify-content: flex-start;
+                max-width: 66%;
+                gap: 0.8rem;
+            }
+
+            .single_post_link {
+                max-width: 34%;
+
+                &:hover {
+                    scale: 1;
+                }
+            }
+        }
+
+        .post_text {
+            padding: 0.825rem 0.525rem;
+            gap: 0.815rem;
+
+            h2 {
+                font-size: 1.185rem;
+                letter-spacing: 0.0325rem;
+            }
+
+            p {
+                line-height: 1.155rem;
+                font-size: 0.925rem;
             }
         }
     }
@@ -573,7 +701,7 @@ export const StyledReactionButtons = styled(ReactionButtons)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         flex-wrap: wrap;
         gap: 0.35rem;
 
@@ -589,6 +717,27 @@ export const StyledReactionButtons = styled(ReactionButtons)`
 
             p {
                 font-size: 0.625rem;
+            }
+        }
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        flex-wrap: wrap;
+        gap: 0.325rem;
+
+        .reaction_button {
+            gap: 0.215rem;
+            background-color: transparent;
+            font-size: 0.855rem;
+            padding: 0.1875rem 0.485rem 0.2375rem 0.485rem;
+
+            &:hover:not(:active):not(:focus) {
+                background-color: transparent;
+            }
+
+            p {
+                font-size: 0.775rem;
             }
         }
     }
@@ -737,7 +886,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         margin: 3%;
 
         .single_post_container {
@@ -787,6 +936,62 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 p {
                     line-height: 1.1rem;
                     font-size: 0.9rem;
+                }
+            }
+        }
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2.5%;
+
+        .single_post_container {
+            margin: 1.75rem 15%;
+            gap: 0.25rem;
+            padding: 1.135rem 1.175rem;
+
+            .post_top_row {
+                width: 100%;
+                gap: 2.5%;
+
+                .author_and_time {
+                    justify-content: flex-start;
+                    max-width: 66%;
+                    gap: 0.8rem;
+                }
+
+                .function_button_row {
+                    gap: 0.65rem;
+                    max-width: 34%;
+
+                    a {
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+
+                    button {
+                        padding: 0;
+
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+                }
+            }
+
+            .post_text {
+                padding: 1.05rem 0.5rem;
+                gap: 0.815rem;
+
+                h2 {
+                    font-size: 1.25rem;
+                    letter-spacing: 0.0335rem;
+                }
+
+                p {
+                    line-height: 1.175rem;
+                    font-size: 0.975rem;
                 }
             }
         }
@@ -1002,7 +1207,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         margin: 3%;
 
         .edit_post_container {
@@ -1067,6 +1272,73 @@ export const StyledEditPostPage = styled(EditPostPage)`
             }
         }
     }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2.5%;
+
+        .edit_post_container {
+            margin: 1.25rem 15%;
+            gap: 1.75rem;
+            padding: 1.1rem 1.325rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.375rem;
+            }
+
+            form {
+                gap: 1.075rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 90%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.955rem;
+                    }
+
+                    textarea {
+                        padding: 0.175rem 0.5rem;
+                        font-size: 0.935rem;
+                    }
+
+                    select {
+                        max-width: 80%;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 0.955rem;
+
+                        option {
+                            font-size: 0.915rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 90%;
+                        padding: 0.225rem 0.5rem;
+                        font-size: 0.865rem;
+                    }
+                }
+
+                button {
+                    font-size: 1.1rem;
+                    margin-top: 0.65rem;
+                    min-width: 50%;
+                    max-width: 75%;
+                    padding: 0.275rem 0.625rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostAuthor = styled(PostAuthor)`
@@ -1118,7 +1390,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         gap: 0.5rem;
         flex-basis: min-content;
 
@@ -1137,6 +1409,27 @@ export const StyledPostAuthor = styled(PostAuthor)`
             font-size: 0.785rem;
         }
     }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        gap: 0.45rem;
+        flex-basis: min-content;
+
+        &:hover {
+            span {
+                color: ${(props) => props.theme.appPrimaryColor};
+            }
+        }
+
+        svg {
+            padding: 0.2375rem;
+            font-size: 0.715rem;
+        }
+
+        span {
+            font-size: 0.855rem;
+        }
+    }
 `;
 
 export const StyledTimePeriod = styled(TimePeriod)`
@@ -1151,7 +1444,12 @@ export const StyledTimePeriod = styled(TimePeriod)`
     }
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         font-size: 0.75rem;
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        font-size: 0.825rem;
     }
 `;

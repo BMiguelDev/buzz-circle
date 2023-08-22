@@ -147,4 +147,4 @@ export const {
 //      https://medium.com/@Jscrambler/implementing-infinite-scroll-with-react-query-and-flatlist-in-react-native-e219c30e3d0c
 //      https://blog.openreplay.com/infinite-scrolling-with-react-query/
 //      - also maybe trigger the query to get more items only when a "+" button is visible in page
-// - make app responsive
+// - make app responsive (tablet landscape (900 to 1200 width) and maybe low height lanscape if necessary?)

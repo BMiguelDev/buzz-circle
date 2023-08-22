@@ -165,7 +165,7 @@ export const StyledNavbar = styled(Navbar)`
 
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         nav {
             padding: 0.45rem 1rem;
 
@@ -218,6 +218,64 @@ export const StyledNavbar = styled(Navbar)`
 
             svg {
                 font-size: 1.1rem;
+            }
+        }
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        nav {
+            padding: 0.625rem 1.5rem;
+
+            a {
+                gap: 0.15rem;
+
+                svg {
+                    font-size: 1.15rem;
+                }
+
+                h1 {
+                    letter-spacing: 0.04rem;
+                    font-size: 1.425rem;
+                }
+            }
+
+            .navbar_links_container {
+                gap: 1.25rem;
+                padding-top: 0.1rem;
+
+                li {
+                    .navbar_link {
+                        font-size: 0.975rem;
+                    }
+
+                    .navbar_link_active {
+                        font-size: 1.05rem;
+                    }
+
+                    &:hover {
+                        translate: 0 0;
+                    }
+                }
+            }
+        }
+
+        .darkmode_button_container {
+            margin: .825rem;
+            width: 1.95rem;
+            height: 1.95rem;
+            padding: .45rem;
+
+            &:hover {
+                translate: 0% 0%;
+
+                svg {
+                    color: ${(props) => props.theme.appIntermediateColor};
+                }
+            }
+
+            svg {
+                font-size: 1.2rem;
             }
         }
     }
@@ -332,7 +390,7 @@ export const StyledFooter = styled(Footer)`
 
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         padding: 0.2rem 1rem;
         gap: 0;
 
@@ -368,6 +426,48 @@ export const StyledFooter = styled(Footer)`
             a:nth-of-type(2) {
                 svg {
                     font-size: 0.625rem;
+                }
+            }
+        }
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        padding: 0.155rem 1.25rem;
+        gap: 0;
+
+        .footer_text {
+            p {
+                letter-spacing: 0.0325rem;
+                word-spacing: 0.045rem;
+                font-size: 0.715rem;
+            }
+        }
+
+        .footer_icon_container {
+            gap: 0.585rem;
+
+            a {
+                width: 1.3rem;
+                height: 1.3rem;
+                padding: 0.525rem;
+
+                svg {
+                    font-size: 0.855rem;
+                }
+
+                &:hover {
+                    svg {
+                        color: var(--footer-color);
+                        translate: 0 0;
+                    }
+                }
+            }
+
+            a:nth-of-type(1),
+            a:nth-of-type(2) {
+                svg {
+                    font-size: 0.755rem;
                 }
             }
         }

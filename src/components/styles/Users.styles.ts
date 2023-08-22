@@ -49,6 +49,7 @@ export const StyledUsersList = styled(UsersList)`
                 flex-direction: row;
                 align-items: center;
                 gap: 0.4rem;
+                width: 100%;
 
                 svg {
                     color: ${(props) => props.theme.appPrimaryColor};
@@ -109,7 +110,7 @@ export const StyledUsersList = styled(UsersList)`
 
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         margin: 1.5rem 12%;
         gap: 1.65rem;
 
@@ -143,6 +144,46 @@ export const StyledUsersList = styled(UsersList)`
                     span {
                         font-size: 0.835rem;
                         line-height: .935rem;
+                    }
+                }
+            }
+        }
+    }
+
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2rem 18%;
+        gap: 1.65rem;
+
+        h2 {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.375rem;
+        }
+
+        ul {
+            justify-content: space-around;
+            row-gap: 0.875rem;
+            align-items: center;
+
+            li {
+                width: 43.75%;
+                display: flex;
+
+                a {
+                    padding: 0.275rem 0.55rem;
+                    gap: 0.45rem;
+                    align-items: center;
+
+                    svg {
+                        padding: 0.25rem;
+                        border: 0.125rem solid ${(props) => props.theme.appPrimaryColor};
+                        font-size: 0.685rem;
+                    }
+
+                    span {
+                        font-size: 0.9rem;
+                        line-height: .985rem;
                     }
                 }
             }
@@ -272,7 +313,7 @@ export const StyledUserPage = styled(UserPage)`
 
 
     // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 550px) and (min-height: 250px) {
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         margin: 3%;
 
         .user_page_container {
@@ -304,6 +345,45 @@ export const StyledUserPage = styled(UserPage)`
 
                     h3 {
                         font-size: .97rem;
+                    }
+                }
+            }
+        }
+    }
+
+     // Mobile tablet portrait screens
+     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+        margin: 2.5%;
+
+        .user_page_container {
+            margin: 1.85rem 18%;
+            gap: 1.75rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.375rem;
+            }
+
+            ul {
+                gap: 1rem;
+
+                li {
+                    border: 0.1rem solid ${(props) => props.theme.appIntermediateColor};
+                    padding: .85rem .875rem;
+                    gap: 0.75rem;
+
+                    .user_post_top_row {
+                        gap: .5rem;
+
+                        a {
+                            text-align: center;
+                            width: fit-content;
+                        }
+                    }
+
+                    h3 {
+                        font-size: 1.065rem;
                     }
                 }
             }

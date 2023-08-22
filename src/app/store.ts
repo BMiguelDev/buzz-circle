@@ -6,6 +6,7 @@ const store = configureStore({
         [apiSlice.reducerPath]: apiSlice.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+    devTools: false //This will make sure the app state can't be seen in production, to keep our data secure
 });
 
 export default store;

@@ -10,7 +10,7 @@ export const useIsElementVisible = (ref: HTMLElement | null) => {
                 setIsIntersecting(entry.isIntersecting);
                 if (ref) observer.unobserve(ref);
             } else setIsIntersecting(false);
-        });
+        }, { threshold: 1.0 });     // 100% of the observed element's body needs to be visible to trigger the function
         if (ref) observer.observe(ref);
 
         return () => {
