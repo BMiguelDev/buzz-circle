@@ -1,65 +1,72 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 
-import { useGetUsersQuery } from "./usersSlice";
+import { useGetUsersByPageQuery } from "./usersSlice";
 import { StyledLoadingSpinner } from "../../components/styles/LoadingSpinner.styles";
 import { useIsElementVisible } from "../../hooks/useIsElementVisible";
+import { UserType } from "../../models/model";
+import { StyledEmptyList } from "../../components/styles/EmptyList.styles";
 
 interface PropTypes {
     className?: string;
 }
 
-const NUMBER_OF_USERS_PER_PAGE = 20;
+const NUMBER_RESULTS_PER_PAGE = 30; // This variable must match the number of results per page returned by the backend
 
 const UsersList = ({ className }: PropTypes) => {
-    const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery("getUsers");
-
-    const [numberOfVisibleUsers, setNumberOfVisibleUsers] = useState(NUMBER_OF_USERS_PER_PAGE);
-    const [isLoadingUsers, setIsLoadingUsers] = useState(false);
-    const [lastElement, setLastElement] = useState<HTMLLIElement | null>(null);
+    const [pageNumber, setPageNumber] = useState(0);
+    const [usersArray, setUsersArray] = useState<UserType[]>([]);
+    const [lastElement, setLastElement] = useState<HTMLDivElement | null>(null);
+    const [isNextPageEmpty, setIsNextPageEmpty] = useState(false);
 
     let isElementVisible = useIsElementVisible(lastElement);
 
-    const increaseNumberOfVisibleUsers = () => {
-        setNumberOfVisibleUsers(prevNumberOfVisibleUsers => prevNumberOfVisibleUsers + NUMBER_OF_USERS_PER_PAGE);
-    }
+    const { data: users, isLoading, isSuccess, isError, error, isFetching } = useGetUsersByPageQuery(pageNumber);
 
     useEffect(() => {
-        if(isElementVisible) {
-            setIsLoadingUsers(true);
-            increaseNumberOfVisibleUsers();
-            setIsLoadingUsers(false);
-        }
+        if (isElementVisible) setPageNumber((prevPageNumber) => prevPageNumber + 1);
     }, [isElementVisible]);
 
+    // When a new page of 'users' is retrieved by 'useGetUsersByPageQuery', update 'usersArray' with the newly retrieved users
+    useEffect(() => {
+        if (users) {
+            let retrievedUsers: UserType[] = [];
+            users.ids.forEach((userId) => {
+                const retrievedUser: UserType = {
+                    id: userId.toString(),
+                    username: users.entities[userId]?.username || ""
+                };
+                retrievedUsers.push(retrievedUser);
+            });
+
+            setUsersArray((prevUsersArray) => [...prevUsersArray, ...retrievedUsers]);
+
+            // If less than 30 results are retrieved (meaning there's no more results in the next page), flip the 'isNextPageEmpty' flag to stop showing the "+" icon and remove the "+" icon element from 'lastElement'
+            if (retrievedUsers.length < NUMBER_RESULTS_PER_PAGE) {
+                setIsNextPageEmpty(true);
+                setLastElement(null);
+            }
+        }
+    }, [users]);
+
     let content;
-    if (isLoading) {
-        content = <StyledLoadingSpinner />;
+    if (isLoading && usersArray.length === 0) {
+        content = null;
+    } else if (isSuccess && users.ids.length === 0 && usersArray.length === 0) {
+        content = <StyledEmptyList textValue="users" redirectPath="/buzz-circle/register" />;
     } else if (isSuccess) {
-        const numberOfUsersToRender = Math.min(numberOfVisibleUsers, users.ids.length);
-        content = users.ids.slice(0, numberOfUsersToRender).map((userId, index) => {
-            const user = users.entities[userId];
-            let nameLength = 0;
-            if (user) {
-                nameLength = user.name.length;
-                return index + 1 === numberOfVisibleUsers ? (
-                    <li key={userId} ref={setLastElement}>
-                        <Link to={`/buzz-circle/users/${userId}`}>
-                            <FontAwesomeIcon icon={faUser} />
-                            <span>{nameLength > 16 ? user.name.substring(0, 15) + "..." : user.name}</span>
-                        </Link>
-                    </li>
-                ) : (
-                    <li key={userId}>
-                        <Link to={`/buzz-circle/users/${userId}`}>
-                            <FontAwesomeIcon icon={faUser} />
-                            <span>{nameLength > 16 ? user.name.substring(0, 15) + "..." : user.name}</span>
-                        </Link>
-                    </li>
-                );
-            } else return null;
+        content = usersArray.map((user) => {
+            const username = user.username;
+            return (
+                <li key={user.id}>
+                    <Link to={`/buzz-circle/users/${user.id}`}>
+                        <FontAwesomeIcon icon={faUser} />
+                        <span title={username}>{username.length > 13 ? username.substring(0, 13) + "..." : username}</span>
+                    </Link>
+                </li>
+            );
         });
     } else if (isError) {
         content = (
@@ -74,7 +81,20 @@ const UsersList = ({ className }: PropTypes) => {
         <section className={className}>
             <h2>Users</h2>
             <ul>{content}</ul>
-            { isLoadingUsers && <StyledLoadingSpinner /> }
+
+            {isSuccess && usersArray.length > 0 && !isNextPageEmpty && (
+                <div className="more-items-wrapper" ref={setLastElement}>
+                    {isFetching ? (
+                        <StyledLoadingSpinner />
+                    ) : (
+                        <div className="more-items-container">
+                            <FontAwesomeIcon icon={faPlus} />
+                        </div>
+                    )}
+                </div>
+            )}
+
+            {isLoading && <StyledLoadingSpinner />}
         </section>
     );
 };

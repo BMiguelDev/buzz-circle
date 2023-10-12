@@ -6,7 +6,6 @@ export const StyledLoadingSpinner = styled(LoadingSpinner)`
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    // TODO: Check if this loading margin is good on all screens
     margin-top: 2rem;
 
     div {
@@ -29,7 +28,7 @@ export const StyledLoadingSpinner = styled(LoadingSpinner)`
         margin: 0;
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         gap: 0.5rem;
 
@@ -70,6 +69,22 @@ export const StyledLoadingSpinner = styled(LoadingSpinner)`
 
         .loading_warning {
             font-size: 0.7rem;
+            text-align: center;
+        }
+    }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        gap: 0.715rem;
+
+        div {
+            gap: 0.715rem;
+            font-size: 1.3rem;
+        }
+
+        .loading_warning {
+            font-size: 0.85rem;
             text-align: center;
         }
     }

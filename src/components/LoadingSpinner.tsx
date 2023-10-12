@@ -1,13 +1,12 @@
+import { useEffect, useState } from "react";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
 
 interface PropTypes {
     className?: string;
 }
 
 const LoadingSpinner = ({ className }: PropTypes) => {
-
     const [isWarning, setIsWarning] = useState(false);
 
     useEffect(() => {

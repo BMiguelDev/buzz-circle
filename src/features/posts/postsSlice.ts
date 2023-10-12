@@ -1,7 +1,6 @@
 import { createEntityAdapter } from "@reduxjs/toolkit";
-import { sub } from "date-fns";
 
-import { PostType, ReactionsType } from "../../models/model";
+import { PostAPIType, PostFieldsType, PostInfoType, PostType, ReactionsType } from "../../models/model";
 import { apiSlice } from "../api/apiSlice";
 
 const postsAdapter = createEntityAdapter<PostType>({
@@ -17,19 +16,17 @@ export const postsSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getPosts: builder.query({
             query: () => "/posts",
-            transformResponse: (responseData: PostType[]) => {
-                let min = 1;
-                const loadedPosts = responseData.map((post) => {
-                    if (!post?.date) post.date = sub(new Date(), { minutes: min++ }).toISOString();
-                    if (!post?.reactions)
-                        post.reactions = {
-                            thumbsup: 0,
-                            mindblown: 0,
-                            heart: 0,
-                            celebration: 0,
-                            eyes: 0,
-                        };
-                    return post;
+            transformResponse: (responseData: PostAPIType[]) => {
+                const loadedPosts: PostType[] = responseData.map((post) => {
+                    const parsedPost: PostType = {
+                        id: post._id,
+                        title: post.title,
+                        body: post.body,
+                        userId: post.userId,
+                        date: post.date,
+                        reactions: post.reactions
+                    };
+                    return parsedPost;
                 });
                 return postsAdapter.setAll(initialState, loadedPosts);
             },
@@ -38,74 +35,93 @@ export const postsSlice = apiSlice.injectEndpoints({
                 ...(result?.ids.map((id) => ({ type: "Post" as const, id })) ?? []),
             ],
         }),
-        getPostsByUserId: builder.query({
-            query: (id) => `posts/?userId=${id}`,
-            transformResponse: (responseData: PostType[]) => {
-                let min = 1;
-                const loadedPosts = responseData.map((post) => {
-                    if (!post?.date) post.date = sub(new Date(), { minutes: min++ }).toISOString();
-                    if (!post?.reactions)
-                        post.reactions = {
-                            thumbsup: 0,
-                            mindblown: 0,
-                            heart: 0,
-                            celebration: 0,
-                            eyes: 0,
-                        };
-                    return post;
+        getPostsByPage: builder.query({     // Query the 'posts' endpoint for a specific "page of results". In our backend, a "page of results" has 16 results by default
+            query: (pageNumber: Number) => `/posts/?page=${pageNumber}`,
+            transformResponse: (responseData: PostAPIType[]) => {
+                const loadedPosts: PostType[] = responseData.map((post) => {
+                    const parsedPost: PostType = {
+                        id: post._id,
+                        title: post.title,
+                        body: post.body,
+                        userId: post.userId,
+                        date: post.date,
+                        reactions: post.reactions
+                    };
+                    return parsedPost;
                 });
                 return postsAdapter.setAll(initialState, loadedPosts);
             },
-            providesTags: (result, error, arg) => [...(result?.ids.map((id) => ({ type: "Post" as const, id })) ?? [])],
+            providesTags: (result, error, arg) => [
+                { type: "Post" as const, id: "LIST" },
+                ...(result?.ids.map((id) => ({ type: "Post" as const, id })) ?? []),
+            ],
+        }),
+        getPostsByUserId: builder.query({   // Query the 'posts' endpoint for posts with a specific 'userId'. Optionally, request a specific "page" of these results. In our backend, a "page of results" has 16 results by default
+            query: ({userId, pageNumber}: { userId: any, pageNumber?: Number}) => pageNumber !== undefined ? `posts/?userId=${userId}&page=${pageNumber}` : `posts/?userId=${userId}`,
+            transformResponse: (responseData: PostAPIType[]) => {
+                const loadedPosts: PostType[] = responseData.map((post) => {
+                    const parsedPost: PostType = {
+                        id: post._id,
+                        title: post.title,
+                        body: post.body,
+                        userId: post.userId,
+                        date: post.date,
+                        reactions: post.reactions
+                    };
+                    return parsedPost;
+                });
+                return postsAdapter.setAll(initialState, loadedPosts);
+            },
+            providesTags: (result, error, arg) => [
+                { type: "Post" as const, id: "LIST" },
+                ...(result?.ids.map((id) => ({ type: "Post" as const, id })) ?? []),
+            ],
         }),
         addPost: builder.mutation({
-            query: (post: PostType) => ({
+            query: (post: PostInfoType) => ({
                 url: "/posts",
                 method: "POST",
                 body: {
                     ...post,
                     date: new Date().toISOString(),
                     reactions: {
-                        thumbsup: 0,
-                        eyes: 0,
-                        heart: 0,
-                        celebration: 0,
-                        mindblown: 0,
+                        thumbsup: [],
+                        eyes: [],
+                        heart: [],
+                        celebration: [],
+                        mindblown: []
                     },
                 },
             }),
             invalidatesTags: [{ type: "Post", id: "LIST" }],
         }),
         updatePost: builder.mutation({
-            query: (post: PostType) => ({
-                url: `/posts/${post.id}`,
+            query: ({ postId, postFields }: { postId: string; postFields: PostFieldsType }) => ({
+                url: `/posts/${postId}`,
                 method: "PUT",
                 body: {
-                    ...post,
+                    ...postFields,
                     date: new Date().toISOString(),
                 },
             }),
-            invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
+            invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.postId }],
         }),
         removePost: builder.mutation({
-            query: ({ id }: { id: number }) => ({
+            query: ({ id }: { id: string }) => ({
                 url: `/posts/${id}`,
                 method: "DELETE",
-                body: {
-                    id,
-                },
             }),
             invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
         }),
-        addReaction: builder.mutation({
-            query: ({ postId, reactions }: { postId: number; reactions: ReactionsType }) => ({
+        updateReaction: builder.mutation({
+            query: ({ postId, reactions }: { postId: string; reactions: ReactionsType }) => ({
                 url: `/posts/${postId}`,
                 method: "PATCH",
                 body: { reactions },
             }),
-            // Optimistic update to add a reaction
+            // Optimistic update to update a reaction
             async onQueryStarted(
-                { postId, reactions }: { postId: number; reactions: ReactionsType },
+                { postId, reactions }: { postId: string; reactions: ReactionsType },
                 { dispatch, queryFulfilled }
             ) {
                 const patchResult = dispatch(
@@ -126,25 +142,10 @@ export const postsSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetPostsQuery,
+    useGetPostsByPageQuery,
     useGetPostsByUserIdQuery,
     useAddPostMutation,
     useUpdatePostMutation,
     useRemovePostMutation,
-    useAddReactionMutation,
+    useUpdateReactionMutation,
 } = postsSlice;
-
-// TODO:
-// - add authentication to backend/api (replaces api key); remove json-server and create express backend + sql database (hosted on railway or planetScale)
-// https://www.youtube.com/watch?v=k6D5MakBktY
-// https://auth0.com/blog/node-js-and-express-tutorial-building-and-securing-restful-apis/
-// https://www.youtube.com/watch?v=mX6IoTXpopw
-// - protected user route for changing profile (name, and image) (https://pqina.nl/blog/upload-image-with-nodejs/)
-// - protected edit and delete functionalities (only author can delete and edit) and remove author from add post
-// - user can only give one reaction of each kind to a post
-// - show author image instead of icon (show icon only for authors with no image)
-// - add user picture to user page design later
-// - maybe improve infinite scrolling on users page, posts page and user posts page (maybe using "useInfiniteQuery" when my api/server supports a "page" query argument (each page having x number of results)). 
-//      https://medium.com/@Jscrambler/implementing-infinite-scroll-with-react-query-and-flatlist-in-react-native-e219c30e3d0c
-//      https://blog.openreplay.com/infinite-scrolling-with-react-query/
-//      - also maybe trigger the query to get more items only when a "+" button is visible in page
-// - make app responsive (tablet landscape (900 to 1200 width) and maybe low height lanscape if necessary?)

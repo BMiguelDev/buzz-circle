@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { StyledPostAuthor, StyledReactionButtons, StyledTimePeriod } from "../../components/styles/Posts.styles";
@@ -5,7 +7,8 @@ import { useGetPostsQuery, useRemovePostMutation } from "./postsSlice";
 import { StyledSmallButton } from "../../components/styles/SmallButton.styles";
 import { StyledBackButton } from "../../components/styles/BackButton.styles";
 import { StyledLoadingSpinner } from "../../components/styles/LoadingSpinner.styles";
-import { useEffect } from "react";
+import { selectCurrentAccessToken, selectCurrentUser } from "../auth/authSlice";
+import useGetUserId from "../../hooks/useGetUserId";
 
 interface PropTypes {
     className?: string;
@@ -14,41 +17,52 @@ interface PropTypes {
 const SinglePostPage = ({ className }: PropTypes) => {
     const { postId } = useParams();
     const navigate = useNavigate();
+    const token = useSelector(selectCurrentAccessToken);
+    const user = useSelector(selectCurrentUser);
+    const [authenticatedUserId, isLoadingUserId] = useGetUserId(user);
 
-    const { post, isLoading } = useGetPostsQuery("getPosts", {
-        selectFromResult: ({ data, isLoading }) => ({
-            post: data?.entities[Number(postId)],
+    const { post, isLoading, isSuccess } = useGetPostsQuery("getPosts", {
+        selectFromResult: ({ data, isLoading, isSuccess }) => ({
+            post: data?.entities[postId as string],
             isLoading,
+            isSuccess,
         }),
     });
 
-    // Make page scroll to the top on load (to prevent page from begin scrolled down on smaller devices)
+    const [removePost] = useRemovePostMutation();
+
+    // Scroll page to the top upon mounting (to prevent page from being scrolled down on smaller devices)
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const [removePost] = useRemovePostMutation();
-
-    if (isLoading) return <StyledLoadingSpinner />;
-
-    if (!post) {
+    if (!post && isSuccess)
         return (
             <section className={className}>
                 <h2 className="error_text">Oops, Post not found!</h2>
             </section>
         );
-    }
+
+    // If post is loading or hasn't started loading yet, return loading component
+    if (!post || isLoading)
+        return (
+            <article className={className}>
+                <StyledLoadingSpinner />
+            </article>
+        );
 
     const handleDeletePost = async () => {
-        try {
-            await removePost({ id: post.id })
-                .unwrap()
-                .then(() => {
-                    navigate("/buzz-circle");
-                });
-        } catch (error) {
-            console.error("Error: Unable to delete post \n", error);
-        }
+        if (!isLoadingUserId && authenticatedUserId === post.userId) {  // If currently authenticated user is the same as the post author, allow deleting the post
+            try {
+                await removePost({ id: post.id })
+                    .unwrap()
+                    .then(() => {
+                        navigate("/buzz-circle");
+                    });
+            } catch (error) {
+                console.error("Error: Unable to delete post \n", error);
+            }
+        } else navigate(`/buzz-circle/unauthorized`);
     };
 
     return (
@@ -60,7 +74,13 @@ const SinglePostPage = ({ className }: PropTypes) => {
                         <StyledPostAuthor userId={post.userId} />
                         <StyledTimePeriod dateString={post.date} />
                     </div>
-                    <div className="function_button_row">
+                    <div
+                        className={
+                            token && !isLoadingUserId && authenticatedUserId === post.userId
+                                ? "function_button_row"
+                                : "hidden_function_button_row"
+                        }
+                    >
                         <Link to={`/buzz-circle/post/edit/${post.id}`}>
                             <StyledSmallButton buttonTitle="Edit" />
                         </Link>

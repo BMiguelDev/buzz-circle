@@ -3,25 +3,36 @@ import { Link, useNavigate } from "react-router-dom";
 import { StyledPostAuthor, StyledReactionButtons, StyledTimePeriod } from "../../components/styles/Posts.styles";
 import { useGetPostsQuery } from "./postsSlice";
 import { StyledSmallButton } from "../../components/styles/SmallButton.styles";
+import { StyledLoadingSpinner } from "../../components/styles/LoadingSpinner.styles";
 
 interface PropTypes {
-    postId: number;
+    postId: string;
     className?: string;
 }
 
 const PostItem = ({ className, postId }: PropTypes): JSX.Element => {
-    const { post } = useGetPostsQuery("getPosts", {
-        selectFromResult: ({ data }) => ({
+    const navigate = useNavigate();
+    
+    const { post, isLoading, isSuccess } = useGetPostsQuery("getPosts", {
+        selectFromResult: ({ data, isLoading, isSuccess }) => ({
             post: data?.entities[postId],
+            isLoading,
+            isSuccess,
         }),
     });
 
-    const navigate = useNavigate();
-
-    if (!post)
+    if (!post && isSuccess)
         return (
             <article className={className}>
                 <h2 className="error_text">Oops, Post not found!</h2>
+            </article>
+        );
+
+    // If post is loading or hasn't started loading yet, return loading component
+    if (!post || isLoading)
+        return (
+            <article className={className}>
+                <StyledLoadingSpinner />
             </article>
         );
 

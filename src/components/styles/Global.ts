@@ -12,22 +12,23 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     body {
         margin: 0;
         padding: 0;
-        font-family: 'Lato', sans-serif;    // This font is being imported in index.html
+        font-family: 'Lato', sans-serif;    // This font is being imported in public/index.html
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
         scroll-behavior: smooth;
     }
 
-    // Remove blue highlight of buttons, links and inputs, when clicked on mobile screens
+    // Remove blue highlight of several elements when clicked on mobile screens
     input,
     textarea,
     button,
     select,
-    a {
+    a,
+    span,
+    svg {
         -webkit-tap-highlight-color: transparent;
     }
 
-    
     // App content
     .app_container {
         background-color: ${(props) => props.theme.appBgColor}; 
@@ -47,8 +48,8 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
             &::before {
                 position: fixed;
                 visibility: visible;
-                background: var(--app-bg-color);
-                color: var(--app-primary-color);
+                background: ${(props) => props.theme.appBgColor};
+                color: ${(props) => props.theme.appPrimaryColor};
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -61,8 +62,17 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
                 z-index: 10;
             }
         }
-    }
 
+        // Mobile smartphone portrait screens (small)
+        @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
+            overflow: hidden;
+        }
+
+        // Mobile smartphone portrait screens (medium)
+        @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
+            overflow: hidden;
+        }
+    }
 
     // Variables
     :root {

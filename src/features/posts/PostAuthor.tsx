@@ -5,7 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useGetUsersQuery } from "../users/usersSlice";
 
 interface PropTypes {
-    userId: number;
+    userId: string;
     className?: string;
 }
 
@@ -19,8 +19,8 @@ const PostAuthor = ({ userId, className }: PropTypes) => {
     return (
         <Link className={className} to={`/buzz-circle/users/${userId}`} onClick={(e) => e.stopPropagation()}>
             <FontAwesomeIcon icon={faUser} />
-            <span>
-                {author ? (author.name.length <= 16 ? author.name : author.name.substring(0, 15) + "...") : "Anonymous"}
+            <span title={author?.username}>
+                {author ? (author.username.length <= 14 ? author.username : author.username.substring(0, 14) + "...") : "Anonymous"}
             </span>
         </Link>
     );

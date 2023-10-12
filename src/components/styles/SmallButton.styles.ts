@@ -31,7 +31,7 @@ export const StyledSmallButton = styled(SmallButton)`
         scale: ${(props) => (props.buttonTitle !== "Back" ? 1.065 : 1)};
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         padding: 0.2rem 0.65rem;
         font-size: 0.665rem;
@@ -89,6 +89,27 @@ export const StyledSmallButton = styled(SmallButton)`
 
         p {
             line-height: .775rem;
+        }
+    }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        padding: 0.335rem 0.825rem;
+        font-size: 0.755rem;
+        letter-spacing: 0.0265rem;
+        gap: 0.45rem;
+
+        svg {
+            font-size: 0.835rem;
+        }
+
+        &:hover {
+            scale: 1;
+        }
+
+        p {
+            line-height: .785rem;
         }
     }
 `;
