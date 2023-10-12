@@ -9,6 +9,27 @@ import EditPostPage from "../../features/posts/EditPostPage";
 import PostAuthor from "../../features/posts/PostAuthor";
 import TimePeriod from "../../features/posts/TimePeriod";
 
+const dangerPulse = keyframes`
+ 0% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1.1) scaleY(1.75);
+    opacity: 0;
+    display: none;
+  }
+`;
+
+const dangerTextPulse = (color: string) => keyframes`
+ 50% {
+    color: red;
+  }
+  100% {
+    color: ${color};
+  }
+`;
+
 export const StyledPostsList = styled(PostsList)`
     margin: 2.5rem 30%;
     display: flex;
@@ -33,7 +54,28 @@ export const StyledPostsList = styled(PostsList)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    .more-items-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .more-items-container {
+            border: 0.15rem solid ${(props) => props.theme.appTextSupportColor};
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 0.8rem 0.95rem;
+        }
+
+        .more-items-container svg {
+            font-size: 2.2rem;
+            color: ${(props) => props.theme.appTextSupportColor};
+        }
+    }
+
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 1.5rem 8%;
         gap: 1.5rem;
@@ -46,6 +88,16 @@ export const StyledPostsList = styled(PostsList)`
 
         .postslist_posts {
             gap: 1rem;
+        }
+
+        .more-items-wrapper {
+            .more-items-container {
+                padding: 0.6rem 0.75rem;
+            }
+
+            .more-items-container svg {
+                font-size: 1.8rem;
+            }
         }
     }
 
@@ -63,10 +115,20 @@ export const StyledPostsList = styled(PostsList)`
         .postslist_posts {
             gap: 1.25rem;
         }
+
+        .more-items-wrapper {
+            .more-items-container {
+                padding: 0.65rem 0.8rem;
+            }
+
+            .more-items-container svg {
+                font-size: 1.9rem;
+            }
+        }
     }
 
-     // Mobile tablet portrait screens
-     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
         margin: 2.1rem 20%;
         gap: 1.825rem;
 
@@ -79,28 +141,44 @@ export const StyledPostsList = styled(PostsList)`
         .postslist_posts {
             gap: 1.25rem;
         }
+
+        .more-items-wrapper {
+            .more-items-container {
+                padding: 0.7rem 0.85rem;
+            }
+
+            .more-items-container svg {
+                font-size: 2rem;
+            }
+        }
     }
-`;
 
-const dangerPulse = keyframes`
- 0% {
-    transform: scaleX(1) scaleY(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(1.1) scaleY(1.75);
-    opacity: 0;
-    display: none;
-  }
-`;
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        margin: 2.3rem 25%;
+        gap: 1.915rem;
 
-const dangerTextPulse = (color: string) => keyframes`
- 50% {
-    color: red;
-  }
-  100% {
-    color: ${color};
-  }
+        .postslist_title {
+            text-indent: 0;
+            text-align: center;
+            font-size: 1.435rem;
+        }
+
+        .postslist_posts {
+            gap: 1.25rem;
+        }
+
+        .more-items-wrapper {
+            .more-items-container {
+                padding: 0.75rem 0.9rem;
+            }
+
+            .more-items-container svg {
+                font-size: 2.1rem;
+            }
+        }
+    }
 `;
 
 export const StyledAddPostPage = styled(AddPostPage)`
@@ -108,12 +186,14 @@ export const StyledAddPostPage = styled(AddPostPage)`
 
     .add_post_container {
         margin: auto 20%;
+        background-color: ${(props) => props.theme.appBgColorSupport};
         border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
         border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        transition: all .15s ease-in-out;
 
         h2 {
             margin: 0;
@@ -179,7 +259,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     border: none;
                     background-color: ${(props) => props.theme.appIntermediateSupportColor};
                     border-radius: 0.35rem;
-                    color: ${(props) => props.theme.appSecondaryColorSupport2};
+                    color: ${(props) => props.theme.appTextInputColor};
 
                     &:focus {
                         outline: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
@@ -208,11 +288,15 @@ export const StyledAddPostPage = styled(AddPostPage)`
                     max-width: 50%;
                     padding: 0.25rem 0.5rem;
                     text-transform: capitalize;
+
+                    &:placeholder-shown {
+                        text-transform: unset;
+                    }
                 }
             }
 
             button {
-                font-size: 1.4rem;
+                font-size: 1.35rem;
                 font-weight: bold;
                 margin-top: 1rem;
                 min-width: 40%;
@@ -221,14 +305,18 @@ export const StyledAddPostPage = styled(AddPostPage)`
                 align-self: center;
                 padding: 0.3rem 0.5rem;
                 border: none;
+                box-shadow: 0 0 0.2rem 0.0125rem ${(props) => props.theme.appSecondaryColorSupport};
                 background-color: ${(props) => props.theme.appSecondaryColorSupport};
                 color: ${(props) => props.theme.appTitleColor};
                 letter-spacing: 0.025rem;
                 transition: all 0.1s ease-in-out;
+                cursor: pointer;
 
                 &:disabled {
                     background-color: ${(props) => props.theme.appTextSupportColor};
                     color: ${(props) => props.theme.appBgColorTransparent};
+                    box-shadow: unset;
+                    cursor: not-allowed;
                 }
 
                 &:hover:not(:disabled) {
@@ -238,7 +326,7 @@ export const StyledAddPostPage = styled(AddPostPage)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
@@ -438,6 +526,74 @@ export const StyledAddPostPage = styled(AddPostPage)`
             }
         }
     }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        margin: 2.25%;
+
+        .add_post_container {
+            margin: 1rem 17.5%;
+            gap: 1.85rem;
+            padding: 1.3rem 1.415rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.435rem;
+            }
+
+            form {
+                gap: 1.035rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 90%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.975rem;
+                    }
+
+                    textarea {
+                        padding: 0.185rem 0.5rem;
+                        font-size: 0.965rem;
+                    }
+
+                    select {
+                        max-width: 65.5%;
+                        padding: 0.225rem 0.5rem;
+                        font-size: 0.985rem;
+
+                        option {
+                            font-size: 0.935rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 90%;
+                        padding: 0.235rem 0.5rem;
+                        font-size: 0.925rem;
+                    }
+                }
+
+                button {
+                    font-size: 1.225rem;
+                    margin-top: 0.825rem;
+                    min-width: 45%;
+                    max-width: 67.5%;
+                    padding: 0.285rem 0.575rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostItem = styled(PostItem)`
@@ -449,6 +605,8 @@ export const StyledPostItem = styled(PostItem)`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    background-color: ${(props) => props.theme.appBgColorSupport};
+    min-height: 125px;
 
     &:hover {
         box-shadow: 0 0 0.265rem 0.115rem ${(props) => props.theme.appIntermediateColor};
@@ -464,16 +622,21 @@ export const StyledPostItem = styled(PostItem)`
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 0.35rem;
 
         .author_and_time {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+
+            max-width: 65%;
         }
 
         .single_post_link {
             text-decoration: none;
             transition: all 0.1s ease-in-out;
+
+            max-width: 30%;
 
             &:hover {
                 scale: 1.065;
@@ -508,10 +671,11 @@ export const StyledPostItem = styled(PostItem)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         padding: 0.5rem 0.75rem;
         gap: 0.5rem;
+        min-height: 100px;
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
@@ -555,6 +719,7 @@ export const StyledPostItem = styled(PostItem)`
     @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
         padding: 0.675rem 0.875rem;
         gap: 0.5rem;
+        min-height: 105px;
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
@@ -595,16 +760,17 @@ export const StyledPostItem = styled(PostItem)`
         }
     }
 
-     // Mobile tablet portrait screens
-     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
+    // Mobile tablet portrait screens
+    @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
         padding: 0.835rem 0.935rem;
         gap: 0.5rem;
+        min-height: 115px;
         -webkit-tap-highlight-color: transparent;
 
         &:hover {
             box-shadow: unset;
         }
-        
+
         .post_top_row {
             width: 100%;
             gap: 3.5%;
@@ -639,6 +805,53 @@ export const StyledPostItem = styled(PostItem)`
             }
         }
     }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        padding: 0.925rem 0.965rem;
+        gap: 0.5rem;
+        min-height: 120px;
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover {
+            box-shadow: unset;
+        }
+
+        .post_top_row {
+            width: 100%;
+            gap: 3%;
+
+            .author_and_time {
+                justify-content: flex-start;
+                max-width: 68%;
+                gap: 0.65rem;
+            }
+
+            .single_post_link {
+                max-width: 32%;
+
+                &:hover {
+                    scale: 1;
+                }
+            }
+        }
+
+        .post_text {
+            padding: 0.915rem 0.515rem;
+            gap: 0.835rem;
+
+            h2 {
+                font-size: 1.24rem;
+                letter-spacing: 0.03375rem;
+            }
+
+            p {
+                line-height: 1.2rem;
+                font-size: 0.965rem;
+            }
+        }
+    }
 `;
 
 export const StyledReactionButtons = styled(ReactionButtons)`
@@ -668,8 +881,12 @@ export const StyledReactionButtons = styled(ReactionButtons)`
             box-shadow: 0 0 1rem 0.1rem ${(props) => props.theme.appPrimaryColor};
         }
 
-        &:hover:not(:active):not(:focus) {
+        &:hover:not(:active):not(:focus):not(.reaction_button_clicked) {
             background-color: rgba(168, 168, 168, 0.319);
+        }
+
+        &.reaction_button_clicked {
+            background-color: ${(props) => props.theme.appSecondaryColorSupport3};
         }
 
         p {
@@ -679,7 +896,7 @@ export const StyledReactionButtons = styled(ReactionButtons)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         flex-wrap: wrap;
         gap: 0.3rem;
@@ -741,11 +958,33 @@ export const StyledReactionButtons = styled(ReactionButtons)`
             }
         }
     }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        flex-wrap: wrap;
+        gap: 0.315rem;
+
+        .reaction_button {
+            gap: 0.235rem;
+            background-color: transparent;
+            font-size: 0.8775rem;
+            padding: 0.1925rem 0.515rem 0.2435rem 0.515rem;
+
+            &:hover:not(:active):not(:focus) {
+                background-color: transparent;
+            }
+
+            p {
+                font-size: 0.815rem;
+            }
+        }
+    }
 `;
 
 export const StyledSinglePostPage = styled(SinglePostPage)`
     margin: 2%;
-    
+
     .error_text {
         text-align: center;
         padding: 10%;
@@ -760,6 +999,8 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
+        background-color: ${(props) => props.theme.appBgColorSupport};
+        transition: all .15s ease-in-out;
 
         .post_top_row {
             display: flex;
@@ -771,6 +1012,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
+                transition: all .15s ease-in-out;
             }
 
             .function_button_row {
@@ -778,6 +1020,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                 flex-direction: row;
                 align-items: center;
                 gap: 1rem;
+                justify-content: flex-end;
 
                 a {
                     text-decoration: none;
@@ -799,6 +1042,10 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
                     }
                 }
             }
+
+            .hidden_function_button_row {
+                display: none;
+            }
         }
 
         .post_text {
@@ -806,6 +1053,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
             display: flex;
             flex-direction: column;
             gap: 0.85rem;
+            transition: all .15s ease-in-out;
 
             h2 {
                 color: ${(props) => props.theme.appIntermediateColor};
@@ -829,7 +1077,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
@@ -844,7 +1092,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
 
                 .author_and_time {
                     justify-content: flex-start;
-                    max-width: 64%;
+                    /* max-width: 64%; */
                     gap: 0.5rem;
                 }
 
@@ -900,7 +1148,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
 
                 .author_and_time {
                     justify-content: flex-start;
-                    max-width: 62.5%;
+                    /* max-width: 62.5%; */
                     gap: 0.65rem;
                 }
 
@@ -956,7 +1204,7 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
 
                 .author_and_time {
                     justify-content: flex-start;
-                    max-width: 66%;
+                    /* max-width: 66%; */
                     gap: 0.8rem;
                 }
 
@@ -996,6 +1244,63 @@ export const StyledSinglePostPage = styled(SinglePostPage)`
             }
         }
     }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        margin: 2.25%;
+
+        .single_post_container {
+            margin: 1.25rem 17.5%;
+            gap: 0.25rem;
+            padding: 1.325rem 1.35rem;
+
+            .post_top_row {
+                width: 100%;
+                gap: 2.5%;
+
+                .author_and_time {
+                    justify-content: flex-start;
+                    /* max-width: 66%; */
+                    gap: 0.65rem;
+                }
+
+                .function_button_row {
+                    gap: 0.85rem;
+                    max-width: 34%;
+
+                    a {
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+
+                    button {
+                        padding: 0;
+
+                        &:hover {
+                            scale: 1;
+                        }
+                    }
+                }
+            }
+
+            .post_text {
+                padding: 1.275rem 0.5rem;
+                gap: 0.835rem;
+
+                h2 {
+                    font-size: 1.375rem;
+                    letter-spacing: 0.034rem;
+                }
+
+                p {
+                    line-height: 1.215rem;
+                    font-size: 1.015rem;
+                }
+            }
+        }
+    }
 `;
 
 export const StyledEditPostPage = styled(EditPostPage)`
@@ -1010,11 +1315,13 @@ export const StyledEditPostPage = styled(EditPostPage)`
     .edit_post_container {
         margin: auto 20%;
         border: 0.05rem solid ${(props) => props.theme.appIntermediateColor};
+        background-color: ${(props) => props.theme.appBgColorSupport};
         border-radius: 0.65rem;
         padding: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        transition: all .15s ease-in-out;
 
         h2 {
             margin: 0;
@@ -1080,7 +1387,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     border: none;
                     background-color: ${(props) => props.theme.appIntermediateSupportColor};
                     border-radius: 0.35rem;
-                    color: ${(props) => props.theme.appSecondaryColorSupport2};
+                    color: ${(props) => props.theme.appTextInputColor};
 
                     &:focus {
                         outline: 0.1rem solid ${(props) => props.theme.appPrimaryColor};
@@ -1122,14 +1429,18 @@ export const StyledEditPostPage = styled(EditPostPage)`
                 align-self: center;
                 padding: 0.3rem 0.5rem;
                 border: none;
+                box-shadow: 0 0 0.2rem 0.0125rem ${(props) => props.theme.appSecondaryColorSupport};
                 background-color: ${(props) => props.theme.appSecondaryColorSupport};
                 color: ${(props) => props.theme.appTitleColor};
                 letter-spacing: 0.025rem;
                 transition: all 0.1s ease-in-out;
+                cursor: pointer;
 
                 &:disabled {
                     background-color: ${(props) => props.theme.appTextSupportColor};
                     color: ${(props) => props.theme.appBgColorTransparent};
+                    box-shadow: unset;
+                    cursor: not-allowed;
                 }
 
                 &:hover:not(:disabled) {
@@ -1139,7 +1450,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
         }
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
         margin: 3%;
 
@@ -1254,7 +1565,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     input {
                         max-width: 100%;
                         padding: 0.2rem 0.5rem;
-                        font-size: 0.865rem;
+                        font-size: 0.875rem;
                     }
                 }
 
@@ -1321,7 +1632,7 @@ export const StyledEditPostPage = styled(EditPostPage)`
                     input {
                         max-width: 90%;
                         padding: 0.225rem 0.5rem;
-                        font-size: 0.865rem;
+                        font-size: 0.935rem;
                     }
                 }
 
@@ -1339,6 +1650,74 @@ export const StyledEditPostPage = styled(EditPostPage)`
             }
         }
     }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        margin: 2.25%;
+
+        .edit_post_container {
+            margin: 1rem 17.5%;
+            gap: 1.85rem;
+            padding: 1.3rem 1.415rem;
+
+            h2 {
+                text-indent: 0;
+                text-align: center;
+                font-size: 1.435rem;
+            }
+
+            form {
+                gap: 1.035rem;
+
+                div {
+                    &.input_max_limit {
+                        div::before {
+                            width: 90%;
+                        }
+                    }
+
+                    label {
+                        font-size: 0.975rem;
+                    }
+
+                    textarea {
+                        padding: 0.185rem 0.5rem;
+                        font-size: 0.965rem;
+                    }
+
+                    select {
+                        max-width: 65.5%;
+                        padding: 0.225rem 0.5rem;
+                        font-size: 0.975rem;
+
+                        option {
+                            font-size: 0.935rem;
+                            max-width: 100%;
+                        }
+                    }
+
+                    input {
+                        max-width: 90%;
+                        padding: 0.2375rem 0.5rem;
+                        font-size: 0.965rem;
+                    }
+                }
+
+                button {
+                    font-size: 1.25rem;
+                    margin-top: 0.825rem;
+                    min-width: 45%;
+                    max-width: 67.5%;
+                    padding: 0.285rem 0.575rem;
+
+                    &:hover:not(:disabled) {
+                        scale: 1;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const StyledPostAuthor = styled(PostAuthor)`
@@ -1347,6 +1726,7 @@ export const StyledPostAuthor = styled(PostAuthor)`
     align-items: center;
     gap: 0.4rem;
     text-decoration: none;
+    word-break: break-all;
 
     &:hover {
         span {
@@ -1363,15 +1743,38 @@ export const StyledPostAuthor = styled(PostAuthor)`
     }
 
     span {
-        font-size: 0.95rem;
+        font-size: .95rem;
+        line-height: 1.075rem;
         color: ${(props) => props.theme.appPrimaryColor};
         transition: all 0.1s ease-in-out;
     }
 
-    // Mobile smartphone portrait screens (very small)
+    // Mobile smartphone portrait screens (small)
     @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
-        gap: 0.4rem;
-        flex-basis: min-content;
+        gap: 0.35rem;
+
+        &:hover {
+            span {
+                color: ${(props) => props.theme.appPrimaryColor};
+            }
+        }
+
+        svg {
+            padding: 0.165rem;
+            border: 0.125rem solid ${(props) => props.theme.appPrimaryColor};
+            font-size: 0.625rem;
+        }
+
+        span {
+            font-size: 0.765rem;
+            line-height: .85rem;
+
+        }
+    }
+
+    // Mobile smartphone portrait screens (medium)
+    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
+        gap: 0.375rem;
 
         &:hover {
             span {
@@ -1381,39 +1784,19 @@ export const StyledPostAuthor = styled(PostAuthor)`
 
         svg {
             padding: 0.2rem;
+            border: 0.145rem solid ${(props) => props.theme.appPrimaryColor};
             font-size: 0.65rem;
         }
 
         span {
-            font-size: 0.765rem;
-        }
-    }
-
-    // Mobile smartphone portrait screens (medium)
-    @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
-        gap: 0.5rem;
-        flex-basis: min-content;
-
-        &:hover {
-            span {
-                color: ${(props) => props.theme.appPrimaryColor};
-            }
-        }
-
-        svg {
-            padding: 0.225rem;
-            font-size: 0.675rem;
-        }
-
-        span {
-            font-size: 0.785rem;
+            font-size: 0.8rem;
+            line-height: .875rem;
         }
     }
 
     // Mobile tablet portrait screens
     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
-        gap: 0.45rem;
-        flex-basis: min-content;
+        gap: 0.4rem;
 
         &:hover {
             span {
@@ -1428,6 +1811,29 @@ export const StyledPostAuthor = styled(PostAuthor)`
 
         span {
             font-size: 0.855rem;
+            line-height: .9rem;
+        }
+    }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        gap: 0.4rem;
+
+        &:hover {
+            span {
+                color: ${(props) => props.theme.appPrimaryColor};
+            }
+        }
+
+        svg {
+            padding: 0.2435rem;
+            font-size: 0.7375rem;
+        }
+
+        span {
+            font-size: 0.9rem;
+            line-height: .975rem;
         }
     }
 `;
@@ -1437,19 +1843,28 @@ export const StyledTimePeriod = styled(TimePeriod)`
     font-size: 0.9rem;
     color: ${(props) => props.theme.appTextSupportColor};
 
-    // Mobile smartphone portrait screens (very small)
-    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) /* and (max-height: 400px),
-        */ /*screen and (min-width: 400px) and (max-width: 450px) and (min-height: 350px) and (max-height: 400px) */ {
-        font-size: 0.725rem;
+    // Mobile smartphone portrait screens (small)
+    @media screen and (min-width: 300px) and (max-width: 400px) and (min-height: 250px) {
+        font-size: 0.7rem;
+        line-height: 0.7rem;
     }
 
     // Mobile smartphone portrait screens (medium)
     @media screen and (min-width: 400px) and (max-width: 600px) and (min-height: 250px) {
-        font-size: 0.75rem;
+        font-size: 0.725rem;
+        line-height: 0.725rem;
     }
 
     // Mobile tablet portrait screens
     @media screen and (min-width: 600px) and (max-width: 900px) and (min-height: 250px) {
-        font-size: 0.825rem;
+        font-size: 0.815rem;
+        line-height: 0.8rem;
+    }
+
+    // Mobile tablet landscape screens
+    @media screen and (min-width: 900px) and (max-width: 1200px) and (min-height: 250px),
+    screen and (min-width: 900px) and (min-height: 250px) and (max-height: 500px) {
+        font-size: 0.855rem;
+        line-height: 0.85rem;
     }
 `;
