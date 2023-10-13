@@ -12,7 +12,6 @@ const useRefreshToken = () => {
     const refreshToken = async () => {
         try {
             const response: any = await refresh({}).unwrap();
-            // TODO: remove this // We don't need to add a conditional here to check if the "response" has the accessToken or not (before sending it to "setAuth") because the "unwrap" method "calls" the error block if there's no data in the "response" (I think)
             const decoded: any = response.accessToken ? jwt_decode(response.accessToken) : undefined;
             const user: string = decoded?.UserInfo?.username || "";
 

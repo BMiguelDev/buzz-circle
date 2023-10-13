@@ -61,13 +61,3 @@ function App() {
 }
 
 export default App;
-
-// TODO:
-// https://www.youtube.com/watch?v=k6D5MakBktY -> Hosting an express api on Render
-// - (PROBABLY DONE) Find how to add secret env variables to backend project, so that they can be seen/used by render?
-// - Problems in production 
-//      - GitHub pages not working on page refresh with no drawbacks yet
-// - Fix all TODOS
-// - Populate database
-// - Add aditional button to portfolio project to show this projects backend. Also add this new description: "Full stack social blog App, integrated with a REST API and NoSQL database, complete with user authentication and protected routes"
-// - Replace mongoDB with SQL PostGRES database (hosted on planetScale, or another free host)

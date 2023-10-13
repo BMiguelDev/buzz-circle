@@ -9,7 +9,7 @@ const store = configureStore({
         auth: authReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
-    // devTools: false  // Disallow development tools, to keep our app state secure. In development we may remove this line      // TODO: uncomment this
+    devTools: false     // Disallow development tools, to keep our app's state secure. In development we may remove this line
 });
 
 export default store;
